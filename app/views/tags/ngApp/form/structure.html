@@ -1,0 +1,8 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%<div class="df-structure" ng-repeat="item in [item.${_arg.name}]">%{ out.print _n;
+_arg.fields.each { field ->
+    if (_debug)
+        field.debugSmartTag('ngApp.form', this, [p: (_p + _s), s: _s, n: _n, d: _d]);
+    field.smartTag('ngApp.form', this, _debug, [p: (_p + _s), s: _s, n: _n, d: _d]);
+}
+out.print _p; }%</div>%{ out.print _n; }%

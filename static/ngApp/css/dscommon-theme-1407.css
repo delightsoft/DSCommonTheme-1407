@@ -1,0 +1,2317 @@
+@charset "UTF-8";
+/*
+	vertical-rhythmic
+	
+	Version : 2.0.0
+	Author  : Aurélien Delogu (dev@dreamysource.fr)
+	License : MIT
+*/
+/*
+	number $vr-ratio
+	number $vr-root-px
+*/
+/*
+	Establish baseline
+
+	Parameters
+		number $font-size
+		number $line-height
+*/
+/*
+	Return a rhythm
+
+	Parameters
+		number $font-size
+		number $factor
+
+	Return
+		number
+*/
+/*
+	Convert REM value to PX
+
+	Parameters
+		number $value
+
+	Return
+		number
+*/
+/* line 9, ../../../theme/ngApp/sass/dscommon-theme-1407.sass */
+html {
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+html:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 16, ../../../theme/ngApp/sass/common/general.sass */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* line 19, ../../../theme/ngApp/sass/common/general.sass */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* line 25, ../../../theme/ngApp/sass/common/general.sass */
+input:focus {
+  outline: 0;
+}
+
+/* line 29, ../../../theme/ngApp/sass/common/general.sass */
+.df-btn, button.df-action, button.dropdown-toggle, .modal .modal-footer .df-modal-btn-group button, .df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button, #ad-login .wrapper form .btn-login, #password-field .df-btn-password, #Contact_password {
+  color: #000;
+  border: 1px solid #bfbfbf;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  font-weight: 300;
+  padding: 0 8px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  line-height: 2.5;
+  font-size: 0.9375rem;
+  background: white;
+}
+/* line 44, ../../../theme/ngApp/sass/common/general.sass */
+.df-btn:hover, button.df-action:hover, button.dropdown-toggle:hover, .modal .modal-footer .df-modal-btn-group button:hover, .df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button:hover, #ad-login .wrapper form .btn-login:hover, #password-field .df-btn-password:hover, #Contact_password:hover {
+  text-decoration: none;
+  color: #000;
+  background: #ccc;
+  border: 1px solid #b3b3b3;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px;
+}
+/* line 50, ../../../theme/ngApp/sass/common/general.sass */
+.df-btn:focus, button.df-action:focus, button.dropdown-toggle:focus, .modal .modal-footer .df-modal-btn-group button:focus, .df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button:focus, #ad-login .wrapper form .btn-login:focus, #password-field .df-btn-password:focus, #Contact_password:focus {
+  outline: 0;
+}
+/* line 52, ../../../theme/ngApp/sass/common/general.sass */
+.df-btn:disabled, button.df-action:disabled, button.dropdown-toggle:disabled, .modal .modal-footer .df-modal-btn-group button:disabled, .df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button:disabled, #ad-login .wrapper form .btn-login:disabled, #password-field .df-btn-password:disabled, #Contact_password:disabled {
+  color: #CCCCCC;
+  cursor: auto;
+  border: 1px solid #CCCCCC;
+}
+/* line 56, ../../../theme/ngApp/sass/common/general.sass */
+.df-btn:disabled:hover, button.df-action:disabled:hover, button.dropdown-toggle:disabled:hover, .modal .modal-footer .df-modal-btn-group button:disabled:hover, .df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button:disabled:hover, #ad-login .wrapper form .btn-login:disabled:hover, #password-field .df-btn-password:disabled:hover, #Contact_password:disabled:hover {
+  background: #ffffff;
+  color: #CCCCCC;
+  border: 1px solid #CCCCCC;
+  box-shadow: transparent 0 0px 0px;
+}
+
+/* line 67, ../../../theme/ngApp/sass/common/general.sass */
+.df-footer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  bottom: 0;
+  height: 3.2rem;
+  border: 1px solid #e6e6e6;
+  background: white;
+  width: 100%;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+.df-footer:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 75, ../../../theme/ngApp/sass/common/general.sass */
+.df-footer button {
+  margin-top: 0.32rem;
+  margin-right: 0.5rem;
+}
+@media (min-width: 40rem) {
+  /* line 67, ../../../theme/ngApp/sass/common/general.sass */
+  .df-footer {
+    padding-left: 12.5%;
+    padding-right: 1.5%;
+  }
+}
+/* line 81, ../../../theme/ngApp/sass/common/general.sass */
+.df-footer .df-dropdown {
+  display: inline-block;
+}
+/* line 83, ../../../theme/ngApp/sass/common/general.sass */
+.df-footer .df-action-cancel {
+  position: absolute;
+  top: 0;
+  right: 1.5%;
+}
+
+/* line 91, ../../../theme/ngApp/sass/common/general.sass */
+button.df-action i, button.dropdown-toggle i {
+  margin: 0;
+}
+/* line 93, ../../../theme/ngApp/sass/common/general.sass */
+button.df-action:hover, button.dropdown-toggle:hover {
+  background: #ccc;
+}
+
+/* line 98, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown {
+  position: relative;
+}
+/* line 100, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown .dropdown-menu {
+  position: absolute;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  height: auto;
+  width: auto;
+  min-width: 10em;
+  max-width: 12em;
+  list-style: none;
+  margin: 0;
+  padding: 0.35em 0;
+  font-size: 0.9375rem;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+  font-weight: 300;
+}
+/* line 118, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown .dropdown-menu li {
+  width: auto;
+  height: auto;
+  min-height: auto;
+  display: list-item;
+  float: none;
+  margin: 0;
+  text-align: left;
+  text-transform: none;
+  padding: 0;
+  position: relative;
+  list-style-type: none;
+}
+/* line 130, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown .dropdown-menu li.separator-above {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid darkgrey;
+}
+/* line 134, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown .dropdown-menu li a {
+  color: #444;
+  padding: 0.2rem 0.8rem;
+  display: block;
+  clear: both;
+  cursor: pointer;
+}
+/* line 140, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown .dropdown-menu li a:hover {
+  background: #f2f2f2;
+  text-decoration: none;
+}
+/* line 144, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown.up.open .dropdown-menu {
+  display: block !important;
+  bottom: 100%;
+}
+/* line 148, ../../../theme/ngApp/sass/common/general.sass */
+.df-dropdown.down.open .dropdown-menu {
+  display: block !important;
+  top: 100%;
+  left: -50%;
+}
+
+/* line 156, ../../../theme/ngApp/sass/common/general.sass */
+.df-screen-header {
+  position: relative;
+  background: #50B9D7;
+  padding: 0.5rem 0;
+}
+/* line 160, ../../../theme/ngApp/sass/common/general.sass */
+.df-screen-header .df-form-title {
+  margin-top: 0;
+  padding-left: 1.5%;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+/* line 165, ../../../theme/ngApp/sass/common/general.sass */
+.df-screen-header .title-state {
+  opacity: 0.5;
+  padding-left: 1rem;
+}
+/* line 168, ../../../theme/ngApp/sass/common/general.sass */
+.df-screen-header .df-form-header-tabs {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 0 !important;
+  border-bottom-color: #e6e6e6;
+  font-weight: 200;
+  font-size: 1rem;
+  margin-right: 1.5%;
+  list-style: none;
+}
+/* line 178, ../../../theme/ngApp/sass/common/general.sass */
+.df-screen-header .df-form-header-tabs li {
+  float: left;
+  margin-bottom: -1px;
+  position: relative;
+  display: block;
+}
+/* line 183, ../../../theme/ngApp/sass/common/general.sass */
+.df-screen-header .df-form-header-tabs li a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: #000;
+  margin-right: 2px;
+  line-height: 1.5;
+  border: 1px solid transparent;
+}
+/* line 193, ../../../theme/ngApp/sass/common/general.sass */
+.df-screen-header .df-form-header-tabs li.active a {
+  color: #000;
+  background-color: #fff;
+  border-color: #fff;
+  cursor: default;
+}
+
+/* line 205, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector input, .modal .modal-body input, .modal-content .df-field .df-update input, .modal-content .df-field .df-update textarea, .df-form-tabs form > .df-field .df-update input, .df-form-tabs form > .df-structure > .df-field .df-update input, .df-form-tabs form > .df-field .df-update textarea, .df-form-tabs form > .df-structure > .df-field .df-update textarea, .df-form-tabs form > .df-form-block .df-field .df-update input, .df-form-tabs form > .df-form-block .df-field .df-update textarea, #password-field .df-update input, #password-field .df-update textarea {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 1px 6px;
+  border: none;
+  resize: none;
+  background: rgba(238, 238, 238, 0.4);
+  vertical-align: middle;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px inset;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* line 215, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector input:focus, .modal .modal-body input:focus, .modal-content .df-field .df-update input:focus, .modal-content .df-field .df-update textarea:focus, .df-form-tabs form > .df-field .df-update input:focus, .df-form-tabs form > .df-field .df-update textarea:focus, #password-field .df-update input:focus, #password-field .df-update textarea:focus {
+  border-color: rgba(153, 153, 153, 0.9);
+  background: #eeeeee;
+  outline: 0 none;
+}
+/* line 219, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector input.df-invalid, .modal .modal-body input.df-invalid, .modal-content .df-field .df-update input.df-invalid, .modal-content .df-field .df-update textarea.df-invalid, .df-form-tabs form > .df-field .df-update input.df-invalid, .df-form-tabs form > .df-field .df-update textarea.df-invalid, #password-field .df-update input.df-invalid, #password-field .df-update textarea.df-invalid {
+  background: #FFEAC8;
+}
+
+/* line 227, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file {
+  overflow: auto;
+}
+/* line 229, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file label {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+}
+/* line 231, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file label:after {
+  content: ":";
+}
+/* line 233, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file > div {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66.66667%;
+  float: left;
+}
+/* line 235, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file a, .df-field.df-type-file span {
+  display: block;
+  float: left;
+  width: 170px;
+  height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0 5px 0 5px;
+  line-height: 1.5;
+}
+/* line 246, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file .upload-process-wrapper {
+  background: #F7F7F7;
+  position: relative;
+}
+/* line 249, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file .upload-process-wrapper .upload-process {
+  -moz-transition: all 1.5s ease-in-out;
+  -o-transition: all 1.5s ease-in-out;
+  -webkit-transition: all 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
+  position: absolute;
+  top: -0.5rem;
+  left: -1rem;
+  width: 0px;
+  background: #c4c4c4;
+  opacity: 0.5;
+  z-index: 100;
+}
+/* line 259, ../../../theme/ngApp/sass/common/general.sass */
+.df-field.df-type-file button {
+  line-height: 1;
+  background: white;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+}
+/* line 51, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-field.df-type-file button:hover {
+  background: #CCCCCC;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-field.df-type-file button:hover i {
+  opacity: 1;
+}
+/* line 55, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-field.df-type-file button:focus {
+  outline: none;
+}
+/* line 57, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-field.df-type-file button i {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+
+/* line 265, ../../../theme/ngApp/sass/common/general.sass */
+.select2-container {
+  width: 100%;
+}
+/* line 267, ../../../theme/ngApp/sass/common/general.sass */
+.select2-container:focus {
+  outline: 0 none;
+}
+/* line 269, ../../../theme/ngApp/sass/common/general.sass */
+.select2-container .select2-choice {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 1px 6px;
+  background: rgba(238, 238, 238, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px inset;
+  background-image: none;
+  border: none;
+  height: 1.3rem;
+  line-height: 1.3rem;
+}
+/* line 279, ../../../theme/ngApp/sass/common/general.sass */
+.select2-container .select2-choice .select2-arrow {
+  border-radius: 0px;
+  background-image: none;
+  background: none;
+  border: none;
+}
+/* line 284, ../../../theme/ngApp/sass/common/general.sass */
+.select2-container .select2-choice .select2-arrow b {
+  background-position: 0 -1px;
+}
+
+/* line 287, ../../../theme/ngApp/sass/common/general.sass */
+.select2-search input {
+  border: 1px solid #c6c6c6;
+}
+
+/* line 290, ../../../theme/ngApp/sass/common/general.sass */
+.select2-drop-active {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px;
+  border-radius: 0px;
+  background: #eeeeee;
+}
+
+/* line 296, ../../../theme/ngApp/sass/common/general.sass */
+.select2-dropdown-open .select2-choice {
+  background: #eeeeee;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px;
+}
+
+/* line 300, ../../../theme/ngApp/sass/common/general.sass */
+.select2-results {
+  font-weight: 300;
+}
+/* line 302, ../../../theme/ngApp/sass/common/general.sass */
+.select2-results .select2-highlighted {
+  color: #000000;
+  background: white;
+}
+
+/* line 312, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs {
+  display: block;
+  border-bottom: 1px solid #ddd;
+  padding-left: 0;
+  list-style: none;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  font-weight: 100;
+}
+/* line 320, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs > li {
+  position: relative;
+  display: inline-block;
+  margin-bottom: -1px;
+}
+/* line 324, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs > li > a {
+  position: relative;
+  display: block;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-right: 0.9375rem;
+  padding-left: 0.9375rem;
+  margin-right: 2px;
+  line-height: 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 2px 2px 0 0;
+  cursor: pointer;
+}
+/* line 333, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs > li > a:hover {
+  background-color: #eee;
+  border-color: #eee #eee #ddd;
+}
+/* line 336, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs > li > a .tab-sign-edited-icon {
+  position: absolute;
+  right: 0.125rem;
+  top: 0.125rem;
+  font-size: 0.5rem;
+  color: red;
+}
+/* line 343, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs > li.active > a {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+/* line 349, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs > li .tab-sign-edited-icon {
+  display: none;
+}
+/* line 352, ../../../theme/ngApp/sass/common/general.sass */
+#item-form-tabs > li .tab-sign-edited .tab-sign-edited-icon {
+  display: block;
+}
+
+/* line 356, ../../../theme/ngApp/sass/common/general.sass */
+.df-form-tab-content .df-form {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+/* line 361, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .add, .df-selector .forward, .df-selector .clear {
+  position: absolute;
+  opacity: 0.3;
+  font-size: 1rem;
+  top: 0;
+  cursor: pointer;
+}
+/* line 367, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .add:hover, .df-selector .forward:hover, .df-selector .clear:hover {
+  opacity: 0.8;
+}
+
+/* line 370, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector {
+  position: relative;
+  max-width: 12rem;
+}
+/* line 375, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .inpt-caret {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  opacity: 0.5;
+}
+/* line 380, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .inpt-caret i {
+  font-size: 14px;
+  cursor: pointer;
+}
+/* line 383, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .add {
+  right: -1.5rem;
+}
+/* line 386, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .forward {
+  right: -3rem;
+}
+/* line 389, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .clear {
+  right: -4.5rem;
+}
+/* line 392, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .select-options {
+  position: absolute;
+  top: 95%;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 120px;
+  width: 12rem;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #cdcdcd;
+}
+/* line 405, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .select-options li {
+  display: block;
+  padding: 5px 10px;
+  line-height: 1;
+  cursor: pointer;
+}
+/* line 410, ../../../theme/ngApp/sass/common/general.sass */
+.df-selector .select-options li:hover {
+  background: #b3b3b3;
+}
+
+/* line 418, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable {
+  width: 100%;
+}
+/* line 421, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr .df-field {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 16.66667%;
+  float: left;
+  margin-right: 1rem;
+}
+/* line 424, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr .df-field.df-type-string, .df-subtable tr .df-field.df-type-date {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+}
+/* line 426, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr .df-field.df-type-bool {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 8.33333%;
+  float: left;
+}
+/* line 428, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr .df-field.df-type-bool .df-update {
+  text-align: center;
+}
+/* line 430, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr .btn-select2-add {
+  cursor: pointer;
+}
+/* line 433, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr:hover .btn-select2-add {
+  opacity: 0.5;
+}
+/* line 435, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr label.df-inline {
+  display: none;
+}
+/* line 437, ../../../theme/ngApp/sass/common/general.sass */
+.df-subtable tr .df-subtable-line-index {
+  width: 1.5rem;
+  text-align: right;
+  padding-right: 0.3rem;
+}
+
+/* line 445, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-prototype, .df-msg-failed, .df-msg-done, .df-msg-progress {
+  position: fixed;
+  z-index: 100;
+  top: 38px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+/* line 450, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-prototype p, .df-msg-failed p, .df-msg-done p, .df-msg-progress p {
+  margin: 0;
+}
+/* line 452, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-prototype .close, .df-msg-failed .close, .df-msg-done .close, .df-msg-progress .close {
+  display: block;
+  float: right;
+  margin-top: -5px;
+  margin-right: -4px;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+/* line 461, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-prototype .close:hover, .df-msg-failed .close:hover, .df-msg-done .close:hover, .df-msg-progress .close:hover {
+  color: #CCCCCC;
+}
+/* line 463, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-prototype > div, .df-msg-failed > div, .df-msg-done > div, .df-msg-progress > div {
+  float: left;
+}
+/* line 465, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-prototype ul, .df-msg-failed ul, .df-msg-done ul, .df-msg-progress ul {
+  display: inline-block;
+  list-style: none;
+  margin: 0 !important;
+  padding: 7px;
+}
+/* line 470, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-prototype ul li.error:before, .df-msg-failed ul li.error:before, .df-msg-done ul li.error:before, .df-msg-progress ul li.error:before {
+  position: absolute;
+  font-family: FontAwesome;
+  left: 8px;
+  content: "";
+  opacity: 0.7;
+}
+
+/* line 477, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-failed {
+  min-width: 400px;
+  background-color: #cd5c5c;
+  color: #fff;
+  padding: 5px 10px;
+  left: 16.66667%;
+  top: 45px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 487, ../../../theme/ngApp/sass/common/general.sass */
+.df-msg-done, .df-msg-progress {
+  left: 40%;
+  border-color: #f0c36d;
+  background-color: #f9edbe;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 501, ../../../theme/ngApp/sass/common/general.sass */
+.df-btn-upload input[type=file] {
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+/* line 511, ../../../theme/ngApp/sass/common/general.sass */
+.df-type-result-popup {
+  position: absolute;
+  z-index: 1000;
+  top: 30px;
+  width: 670px;
+  padding: 2rem;
+  background-color: #e6e6e6;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+/* line 520, ../../../theme/ngApp/sass/common/general.sass */
+.df-type-result-popup > div {
+  height: 300px;
+  overflow-y: scroll;
+}
+/* line 523, ../../../theme/ngApp/sass/common/general.sass */
+.df-type-result-popup .close {
+  position: absolute;
+  cursor: pointer;
+  top: 5px;
+  right: 5px;
+  font-size: 1.2rem;
+  opacity: 0.5;
+  font-weight: bold;
+}
+/* line 531, ../../../theme/ngApp/sass/common/general.sass */
+.df-type-result-popup .result-text {
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid #cccccc;
+  background-color: white;
+  border-radius: 5px;
+  padding: 1rem;
+}
+/* line 538, ../../../theme/ngApp/sass/common/general.sass */
+.df-type-result-popup .result-text::-webkit-scrollbar {
+  display: none;
+}
+/* line 540, ../../../theme/ngApp/sass/common/general.sass */
+.df-type-result-popup .result-text > ul > li {
+  margin-bottom: 1rem;
+}
+
+/* line 543, ../../../theme/ngApp/sass/common/general.sass */
+.result-badge {
+  display: block;
+  position: absolute;
+  border-radius: 10px;
+  padding: 3px 4px;
+  font-size: 10px;
+  line-height: 8px;
+}
+
+/* line 551, ../../../theme/ngApp/sass/common/general.sass */
+.result-badge {
+  top: 0px;
+  right: 40px;
+  background-color: darkgray;
+  color: white;
+  border: 2px solid white;
+}
+
+/* line 2, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal {
+  display: none;
+  overflow: auto;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+/* line 14, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-dialog {
+  position: relative;
+  z-index: 1050;
+  width: auto;
+  padding: 10px;
+  padding-top: 7rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 992px) {
+  /* line 14, ../../../theme/ngApp/sass/common/_modal.sass */
+  .modal .modal-dialog {
+    width: 600px;
+  }
+}
+/* line 24, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-content {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  outline: 0;
+}
+/* line 33, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-header, .modal .df-page-header-panel {
+  padding: 9px;
+  min-height: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* line 37, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-header h4, .modal .modal-header h3, .modal .df-page-header-panel h4, .modal .df-page-header-panel h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+/* line 40, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-header .close, .modal .df-page-header-panel .close {
+  margin-top: -2px;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body {
+  position: relative;
+  padding: 20px;
+  overflow: auto;
+}
+/* line 57, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body input {
+  padding: 5px;
+}
+/* line 60, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body .btn-group {
+  float: right;
+  margin-top: 0.7rem;
+}
+/* line 63, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body .btn-group .df-btn {
+  position: relative;
+  overflow: hidden;
+  background: #47A447;
+  color: white;
+}
+/* line 68, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body .btn-group .df-btn:hover {
+  background: #388038;
+}
+/* line 70, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body .btn-group .df-btn.df-btn-upload {
+  background: #3276B1;
+}
+/* line 72, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body .btn-group .df-btn.df-btn-upload:hover {
+  background: #275b89;
+}
+/* line 75, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-body .btn-group i {
+  color: white;
+  margin-right: 0.3rem;
+}
+/* line 78, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-footer {
+  border-top: 1px solid #CCCCCC;
+  padding: 0.5rem;
+  overflow: auto;
+}
+/* line 82, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal .modal-footer .df-modal-btn-group {
+  float: right;
+}
+/* line 88, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal.in .modal-dialog {
+  transform: translate(0, 0);
+}
+/* line 91, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal.fade .modal-dialog {
+  -moz-transition: -moz-transform, 0.3s, ease-out;
+  -o-transition: -o-transform, 0.3s, ease-out;
+  -webkit-transition: -webkit-transform, 0.3s, ease-out;
+  transition: transform, 0.3s, ease-out;
+}
+
+/* line 94, ../../../theme/ngApp/sass/common/_modal.sass */
+.fade {
+  opacity: 0;
+  -moz-transition: opacity, 0.15s, lenear;
+  -o-transition: opacity, 0.15s, lenear;
+  -webkit-transition: opacity, 0.15s, lenear;
+  transition: opacity, 0.15s, lenear;
+}
+/* line 97, ../../../theme/ngApp/sass/common/_modal.sass */
+.fade.in {
+  opacity: 1;
+}
+
+/* line 100, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+}
+/* line 108, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-backdrop.in {
+  opacity: 0.5;
+}
+
+/* line 113, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-form-tabs .tab-content {
+  max-height: 400px;
+  overflow: scroll;
+}
+/* line 116, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-form-tabs .tab-content form {
+  position: relative;
+}
+/* line 118, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-form-tabs .tab-content form > .df-field, .modal-content .df-form-tabs .tab-content form > .df-structure > .df-field {
+  clear: both;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* line 120, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-form-tabs .tab-content form .df-footer {
+  position: absolute;
+}
+
+/* line 125, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-field {
+  overflow: auto;
+  position: relative;
+  line-height: 2.4rem;
+  box-sizing: border-box;
+}
+/* line 67, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-label.df-inline {
+  text-align: right;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+/* line 71, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-label.df-inline.double-row {
+  line-height: 1.5rem;
+}
+/* line 74, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-inline:after {
+  content: ":";
+}
+/* line 76, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update {
+  position: relative;
+  max-width: 12rem;
+}
+/* line 79, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update .df-validation-msg {
+  line-height: 0;
+  font-size: 0.8rem;
+  min-height: 0.8rem;
+  display: block;
+  color: red;
+  text-align: right;
+}
+/* line 88, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update input[type=checkbox] {
+  box-shadow: none;
+  width: auto;
+}
+/* line 91, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update textarea {
+  resize: both;
+  margin-top: 0.5rem;
+  line-height: 1rem;
+  min-height: 5rem;
+}
+/* line 97, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.df-refers {
+  max-width: 17rem;
+}
+/* line 99, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.df-refers .select2-container {
+  width: 180px;
+  margin-right: 3px;
+}
+/* line 102, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.df-refers [class^="btn-select2-"] {
+  line-height: 1;
+  background: white;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+  display: inline-block;
+  padding: 2px 6px 3px;
+}
+/* line 51, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.df-refers [class^="btn-select2-"]:hover {
+  background: #CCCCCC;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.df-refers [class^="btn-select2-"]:hover i {
+  opacity: 1;
+}
+/* line 55, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.df-refers [class^="btn-select2-"]:focus {
+  outline: none;
+}
+/* line 57, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.df-refers [class^="btn-select2-"] i {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+/* line 106, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update .df-view {
+  font-weight: 300;
+}
+/* line 109, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field .df-update.valid-error input {
+  background: #FFEAC8;
+}
+/* line 113, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.modal-content .df-field.df-type-bool .df-update .df-validation-msg {
+  display: none;
+}
+/* line 128, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-field .df-label.df-inline.double-row {
+  line-height: inherit;
+}
+/* line 130, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-label {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 41.66667%;
+  float: left;
+}
+/* line 132, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-content .df-update {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+}
+
+@media (min-width: 992px) {
+  /* line 136, ../../../theme/ngApp/sass/common/_modal.sass */
+  .df-area-result-popup .modal-dialog {
+    width: 900px;
+  }
+}
+/* line 139, ../../../theme/ngApp/sass/common/_modal.sass */
+.df-area-result-popup .modal-dialog .modal-content {
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+/* line 143, ../../../theme/ngApp/sass/common/_modal.sass */
+.df-area-result-popup .modal-dialog .modal-content .fa-times {
+  position: absolute;
+  z-index: 1000;
+  right: 15px;
+  top: 11px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+/* line 153, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-confirm .col1 {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 16.66667%;
+  float: left;
+  margin-left: 8.33333%;
+  text-align: center;
+  font-size: 5rem;
+}
+/* line 158, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-confirm .col1 i {
+  color: #31B0D5;
+}
+/* line 160, ../../../theme/ngApp/sass/common/_modal.sass */
+.modal-confirm .col2 {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66.66667%;
+  float: left;
+}
+
+/* line 12, ../../../theme/ngApp/sass/common/_header.sass */
+header div.user, header .tasks, header div.logo, header nav, header nav * {
+  line-height: 2.4rem;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 16, ../../../theme/ngApp/sass/common/_header.sass */
+header div.user ul, header .tasks ul, header div.logo ul, header nav ul {
+  list-style: none;
+  margin: 0 0 0 1rem;
+  padding: 0;
+}
+
+/* line 23, ../../../theme/ngApp/sass/common/_header.sass */
+header div.user ul a, header .tasks ul a, header div.logo ul a, header nav ul a, header nav * ul a {
+  opacity: 0.6;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+/* line 28, ../../../theme/ngApp/sass/common/_header.sass */
+header div.user ul a:hover, header .tasks ul a:hover, header div.logo ul a:hover, header nav ul a:hover {
+  opacity: 1;
+}
+
+/* line 31, ../../../theme/ngApp/sass/common/_header.sass */
+header {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: black;
+  line-height: 2.4rem;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+header:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 12, ../../../theme/ngApp/sass/common/_mixins1.sass */
+header a, header a:hover, header a:focus {
+  color: white;
+  text-decoration: none;
+  outline: none;
+}
+/* line 37, ../../../theme/ngApp/sass/common/_header.sass */
+header div.user {
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  background-color: #000000;
+}
+/* line 43, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks {
+  position: absolute;
+  right: 20rem;
+  top: 0;
+  background-color: #000000;
+}
+/* line 50, ../../../theme/ngApp/sass/common/_header.sass */
+header div.logo {
+  font-size: 1.2rem;
+}
+/* line 55, ../../../theme/ngApp/sass/common/_header.sass */
+header nav * {
+  font-size: 0.875rem;
+}
+/* line 59, ../../../theme/ngApp/sass/common/_header.sass */
+header .df-dropdown .dropdown-menu, header div.user .dropdown-menu, header .tasks .dropdown-menu {
+  background: #000000;
+  border: none;
+  max-width: none;
+  min-width: 160px;
+  -moz-border-radius: 0 0 2px 2px;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 2px 2px;
+}
+/* line 66, ../../../theme/ngApp/sass/common/_header.sass */
+header .df-dropdown .dropdown-menu li a, header div.user .dropdown-menu li a, header .tasks .dropdown-menu li a {
+  color: white;
+  padding: 0.3rem 1rem;
+  line-height: 1;
+}
+/* line 70, ../../../theme/ngApp/sass/common/_header.sass */
+header .df-dropdown .dropdown-menu li a:hover, header div.user .dropdown-menu li a:hover, header .tasks .dropdown-menu li a:hover {
+  color: #ccc;
+  background-color: #4c4c4c;
+}
+/* line 74, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-toggle {
+  position: relative;
+}
+/* line 76, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-toggle .tasks-badge {
+  position: absolute;
+  top: -6px;
+  right: -14px;
+  background-color: #449D44;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  display: block;
+  line-height: 14px;
+}
+/* line 86, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu {
+  color: white;
+  width: 25rem;
+  left: -23rem;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  height: 20rem;
+}
+/* line 93, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu .tasks-menu-footer {
+  height: 30px;
+}
+/* line 95, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu .tasks-menu-footer button {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  text-align: center;
+  float: right;
+  margin-right: 0.5rem;
+  border: none;
+  margin-top: 0.4rem;
+}
+/* line 103, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul {
+  height: 18rem;
+  overflow-y: scroll;
+}
+/* line 106, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li {
+  padding: 1rem;
+  margin-bottom: 0.3rem;
+}
+/* line 109, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li:hover {
+  background-color: #333333;
+}
+/* line 111, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li div {
+  overflow: auto;
+}
+/* line 113, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .col1 {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+}
+/* line 115, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .col2 {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66.66667%;
+  float: left;
+  margin-left: 8.33333%;
+}
+/* line 118, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-btn {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+/* line 124, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-state.finish {
+  background-color: #449D44;
+}
+/* line 126, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-state.process {
+  background-color: #31B0D5;
+}
+/* line 128, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-state.wait {
+  background-color: #3071A9;
+}
+/* line 130, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-result {
+  background-color: #86d0e6;
+  cursor: pointer;
+}
+/* line 133, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-result:hover {
+  background-color: #5bc0de;
+}
+/* line 135, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-stop {
+  background-color: #EC971F;
+  cursor: pointer;
+}
+/* line 138, ../../../theme/ngApp/sass/common/_header.sass */
+header .tasks .dropdown-menu > ul li .task-stop:hover {
+  background-color: #c77c11;
+}
+@media (min-width: 0) and (max-width: 40rem) {
+  /* line 142, ../../../theme/ngApp/sass/common/_header.sass */
+  header div.logo {
+    margin-left: 1rem;
+  }
+  /* line 144, ../../../theme/ngApp/sass/common/_header.sass */
+  header nav {
+    width: 100%;
+  }
+}
+@media (min-width: 40rem) {
+  /* line 31, ../../../theme/ngApp/sass/common/_header.sass */
+  header {
+    padding-left: 1.5%;
+  }
+  /* line 149, ../../../theme/ngApp/sass/common/_header.sass */
+  header div.user {
+    right: 1.5%;
+  }
+}
+
+/* line 152, ../../../theme/ngApp/sass/common/_header.sass */
+.df-page-header {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #e6e6e6;
+  color: black;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+.df-page-header:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 156, ../../../theme/ngApp/sass/common/_header.sass */
+.df-page-header h2 {
+  line-height: 2.4rem;
+  font-weight: 400;
+  margin: 0;
+  padding-left: 1.5%;
+  font-size: 1.1553rem;
+}
+
+/* line 3, ../../../theme/ngApp/sass/common/_color-coding.sass */
+span.label.value-success {
+  background-color: #449D44;
+}
+/* line 5, ../../../theme/ngApp/sass/common/_color-coding.sass */
+span.label.value-error {
+  background-color: #D9534F;
+}
+/* line 7, ../../../theme/ngApp/sass/common/_color-coding.sass */
+span.label.value-opened {
+  background-color: #31B0D5;
+}
+/* line 9, ../../../theme/ngApp/sass/common/_color-coding.sass */
+span.label.value-closed {
+  background-color: #3071A9;
+}
+
+/* line 16, ../../../theme/ngApp/sass/common/_color-coding.sass */
+.df-type-result .df-view.result-success {
+  background: #449D44;
+}
+/* line 18, ../../../theme/ngApp/sass/common/_color-coding.sass */
+.df-type-result .df-view.result-error {
+  background: #D9534F;
+}
+
+/* line 5, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-action-create {
+  height: 25px;
+  line-height: 1;
+  background-color: #E6E6E6;
+  border: 1px solid #b3b3b3;
+  vertical-align: middle;
+}
+/* line 11, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-action-create:hover {
+  box-shadow: none;
+  background-color: #b3b3b3;
+}
+/* line 14, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-action-create i {
+  opacity: 0.5;
+}
+
+/* line 17, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-search input, .df-screen-list docflow-table > .df-header .df-block-filters .df-list-filter input, .df-screen-list docflow-table > .df-header .df-block-filters .df-sort-orders input {
+  border: 1px solid #cdcdcd;
+  height: 25px;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0px;
+  padding-left: 10px;
+  border-radius: 2px;
+}
+
+/* line 35, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list a {
+  text-decoration: none;
+}
+/* line 38, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header {
+  position: relative;
+  background: #E6E6E6;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 41, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header h2 {
+  margin: 0;
+  padding-left: 1.5%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+.df-screen-list docflow-table > .df-header:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 47, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters {
+  padding-left: 1.5%;
+  padding-bottom: 0.5rem;
+  font-weight: 300;
+  overflow: hidden;
+  float: left;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-search {
+  padding-top: 0;
+  padding-right: 1rem;
+  float: left;
+  display: table;
+  border-collapse: separate;
+}
+/* line 59, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-search input {
+  display: table-cell;
+  width: 10rem;
+}
+/* line 63, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 66, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button {
+  display: inline-block;
+  height: 27px;
+  line-height: 1;
+  margin-left: -1px;
+  border: 1px solid #cdcdcd;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #b3b3b3;
+}
+/* line 77, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button:hover {
+  background: #d9d9d9;
+  box-shadow: none;
+  border: 1px solid #cdcdcd;
+}
+/* line 81, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-search span button i {
+  margin-right: 0;
+}
+/* line 83, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-filter {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  width: 7rem;
+  margin-right: 1.5rem;
+}
+/* line 29, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-list-filter input {
+  font-size: 13px;
+  width: 100%;
+}
+/* line 86, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-sort-orders {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  width: 9rem;
+  margin-right: 1.5rem;
+}
+/* line 29, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-sort-orders input {
+  font-size: 13px;
+  width: 100%;
+}
+/* line 89, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-block-filters .df-sord-order-direction {
+  line-height: 25px;
+  float: left;
+  font-size: 1rem;
+  color: gray;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin-right: 2rem;
+  opacity: 0.5;
+  cursor: pointer;
+}
+/* line 98, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table > .df-header .df-action-create {
+  height: 26px;
+  margin-right: 1.5%;
+  font-weight: 100;
+  float: right;
+}
+/* line 105, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list {
+  height: 500px;
+  overflow-y: scroll;
+}
+/* line 108, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list, .df-screen-list docflow-table .df-block-list .df-list-header {
+  width: 100%;
+}
+/* line 110, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list table, .df-screen-list docflow-table .df-block-list .df-list-header table {
+  width: 100%;
+}
+/* line 112, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list .df-field, .df-screen-list docflow-table .df-block-list .df-list-header .df-field {
+  text-align: left;
+  padding: 2px 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 8.33333%;
+  float: left;
+}
+/* line 116, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-enum, .df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-string, .df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-text, .df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-file, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-enum, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-string, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-text, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-file {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 16.66667%;
+  float: left;
+}
+/* line 118, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-enum.df-type-__state, .df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-string.df-type-__state, .df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-text.df-type-__state, .df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-file.df-type-__state, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-enum.df-type-__state, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-string.df-type-__state, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-text.df-type-__state, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-file.df-type-__state {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 8.33333%;
+  float: left;
+}
+/* line 120, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list .df-field.df-type-result, .df-screen-list docflow-table .df-block-list .df-list-header .df-field.df-type-result {
+  position: relative;
+  cursor: pointer;
+}
+/* line 123, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list label.df-inline, .df-screen-list docflow-table .df-block-list .df-list-header label.df-inline {
+  display: none;
+}
+/* line 125, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list tr, .df-screen-list docflow-table .df-block-list .df-list-header tr {
+  border-bottom: 1px solid #ebebeb;
+}
+/* line 127, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td, .df-screen-list docflow-table .df-block-list .df-list th, .df-screen-list docflow-table .df-block-list .df-list-header td, .df-screen-list docflow-table .df-block-list .df-list-header th {
+  padding: 0;
+  font-size: 0.84375rem;
+}
+/* line 131, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td .df-block-actions button, .df-screen-list docflow-table .df-block-list .df-list th .df-block-actions button, .df-screen-list docflow-table .df-block-list .df-list-header td .df-block-actions button, .df-screen-list docflow-table .df-block-list .df-list-header th .df-block-actions button {
+  line-height: 1.5;
+}
+/* line 133, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td.df-td-other-actions, .df-screen-list docflow-table .df-block-list .df-list th.df-td-other-actions, .df-screen-list docflow-table .df-block-list .df-list-header td.df-td-other-actions, .df-screen-list docflow-table .df-block-list .df-list-header th.df-td-other-actions {
+  width: 3rem;
+}
+/* line 135, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td.df-td-other-actions .dropdown-menu, .df-screen-list docflow-table .df-block-list .df-list th.df-td-other-actions .dropdown-menu, .df-screen-list docflow-table .df-block-list .df-list-header td.df-td-other-actions .dropdown-menu, .df-screen-list docflow-table .df-block-list .df-list-header th.df-td-other-actions .dropdown-menu {
+  top: 50%;
+  right: 1rem;
+  left: auto;
+  padding: 1rem;
+}
+/* line 140, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td.df-td-open-doc, .df-screen-list docflow-table .df-block-list .df-list th.df-td-open-doc, .df-screen-list docflow-table .df-block-list .df-list-header td.df-td-open-doc, .df-screen-list docflow-table .df-block-list .df-list-header th.df-td-open-doc {
+  width: 4rem;
+  padding: 0;
+}
+/* line 143, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td.df-td-open-doc.link, .df-screen-list docflow-table .df-block-list .df-list th.df-td-open-doc.link, .df-screen-list docflow-table .df-block-list .df-list-header td.df-td-open-doc.link, .df-screen-list docflow-table .df-block-list .df-list-header th.df-td-open-doc.link {
+  width: 4rem;
+  padding: 0;
+  vertical-align: top;
+  cursor: pointer;
+}
+/* line 148, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td.df-td-open-doc.link:hover, .df-screen-list docflow-table .df-block-list .df-list th.df-td-open-doc.link:hover, .df-screen-list docflow-table .df-block-list .df-list-header td.df-td-open-doc.link:hover, .df-screen-list docflow-table .df-block-list .df-list-header th.df-td-open-doc.link:hover {
+  background-color: silver;
+}
+/* line 150, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td.df-td-open-doc.link a, .df-screen-list docflow-table .df-block-list .df-list th.df-td-open-doc.link a, .df-screen-list docflow-table .df-block-list .df-list-header td.df-td-open-doc.link a, .df-screen-list docflow-table .df-block-list .df-list-header th.df-td-open-doc.link a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+}
+/* line 157, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list td.df-td-open-doc.link i, .df-screen-list docflow-table .df-block-list .df-list th.df-td-open-doc.link i, .df-screen-list docflow-table .df-block-list .df-list-header td.df-td-open-doc.link i, .df-screen-list docflow-table .df-block-list .df-list-header th.df-td-open-doc.link i {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+/* line 161, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list tr:hover td.df-td-open-doc, .df-screen-list docflow-table .df-block-list .df-list-header tr:hover td.df-td-open-doc {
+  opacity: 0.8;
+}
+/* line 163, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list th, .df-screen-list docflow-table .df-block-list .df-list-header th {
+  line-height: 1;
+  padding: 0.5rem 1.5%;
+}
+/* line 167, ../../../theme/ngApp/sass/common/_list.sass */
+.df-screen-list docflow-table .df-block-list .df-list tbody tr:hover, .df-screen-list docflow-table .df-block-list .df-list-header tbody tr:hover {
+  background-color: #f7f7f7;
+}
+
+/* line 170, ../../../theme/ngApp/sass/common/_list.sass */
+.df-type-result .df-view, span.label {
+  display: inline;
+  color: white;
+  padding: 0.2rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.65625rem;
+  background-color: #808080;
+}
+/* line 177, ../../../theme/ngApp/sass/common/_list.sass */
+.df-type-result .df-state-blue-dark.df-view, span.df-state-blue-dark.label, .df-type-result .df-enum-blue-dark.df-view, span.df-enum-blue-dark.label {
+  background-color: #3071A9;
+}
+/* line 179, ../../../theme/ngApp/sass/common/_list.sass */
+.df-type-result .df-state-blue-light.df-view, span.df-state-blue-light.label, .df-type-result .df-enum-blue-light.df-view, span.df-enum-blue-light.label {
+  background-color: #31B0D5;
+}
+/* line 181, ../../../theme/ngApp/sass/common/_list.sass */
+.df-type-result .df-state-orange.df-view, span.df-state-orange.label, .df-type-result .df-enum-orange.df-view, span.df-enum-orange.label {
+  background-color: #EC971F;
+}
+/* line 183, ../../../theme/ngApp/sass/common/_list.sass */
+.df-type-result .df-state-green.df-view, span.df-state-green.label, .df-type-result .df-enum-green.df-view, span.df-enum-green.label {
+  background-color: #449D44;
+}
+/* line 185, ../../../theme/ngApp/sass/common/_list.sass */
+.df-type-result .df-state-red.df-view, span.df-state-red.label, .df-type-result .df-enum-red.df-view, span.df-enum-red.label {
+  background-color: #D9534F;
+}
+
+/* line 193, ../../../theme/ngApp/sass/common/_list.sass */
+.select-options {
+  position: absolute;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 120px;
+  width: 180px;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #cdcdcd;
+}
+/* line 202, ../../../theme/ngApp/sass/common/_list.sass */
+.select-options span {
+  display: block;
+  padding: 4px 7px;
+  cursor: pointer;
+}
+/* line 206, ../../../theme/ngApp/sass/common/_list.sass */
+.select-options span:hover {
+  background: #b3b3b3;
+}
+
+/* line 209, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination {
+  margin: 0.5rem 1.5%;
+}
+/* line 211, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination {
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 0;
+  margin: 0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+/* line 218, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination > li {
+  display: inline;
+}
+/* line 220, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination > li:first-child > a {
+  margin-left: 0;
+  border-left: 1px solid #ddd;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+/* line 225, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination > li:last-child > a {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+/* line 228, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination > li a {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857;
+  text-decoration: none;
+  color: #428bca;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-left: none;
+}
+/* line 238, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination > li a:hover {
+  color: #2a6496;
+  background-color: #eee;
+  border-color: #ddd;
+}
+/* line 243, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination > li.active a {
+  background-color: #cedeee;
+}
+/* line 245, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination .pagination > li.disabled a {
+  color: #808080;
+}
+/* line 247, ../../../theme/ngApp/sass/common/_list.sass */
+.df-pagination span.items {
+  display: inline-block;
+  padding-left: 2rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* line 253, ../../../theme/ngApp/sass/common/_list.sass */
+.df-block-pagination {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+}
+
+/* line 2, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login {
+  margin-top: 5rem;
+}
+/* line 5, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper {
+  margin-left: 25%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+}
+/* line 8, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper #system-logo {
+  text-align: center;
+}
+/* line 10, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper #system-logo img {
+  width: 100%;
+  max-width: 448px;
+}
+/* line 13, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper .block-message-error {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  margin-left: 25%;
+}
+/* line 17, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper .block-message-error span {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #D9534F;
+  color: white;
+}
+/* line 23, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper form {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  margin-left: 25%;
+}
+/* line 27, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper form .input {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+/* line 32, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper form .input.error input {
+  background-color: #F9E4A7;
+}
+/* line 34, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper form .input input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+/* line 40, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper form .btn-login {
+  width: 100%;
+  background-color: #449D44;
+}
+/* line 44, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper form .btn-login:hover {
+  background-color: #357935;
+}
+/* line 46, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper .providers {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  margin-left: 25%;
+}
+/* line 50, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper .providers img {
+  height: 2.5rem;
+  opacity: 0.5;
+}
+/* line 53, ../../../theme/ngApp/sass/common/login.sass */
+#ad-login .wrapper .providers img:hover {
+  opacity: 1;
+}
+
+/* line 2, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form {
+  font-size: 0.9375rem;
+  padding-top: 1.6rem;
+  padding-bottom: 9.6rem;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+.df-form-tabs form:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 10, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field.df-is-empty {
+  display: none;
+}
+/* line 12, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field, .df-form-tabs form > .df-structure > .df-field {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  position: relative;
+  line-height: 2.4rem;
+  box-sizing: border-box;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+.df-form-tabs form > .df-field:after, .df-form-tabs form > .df-structure > .df-field:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 67, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-label.df-inline, .df-form-tabs form > .df-structure > .df-field .df-label.df-inline {
+  text-align: right;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+/* line 71, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-label.df-inline.double-row, .df-form-tabs form > .df-structure > .df-field .df-label.df-inline.double-row {
+  line-height: 1.5rem;
+}
+/* line 74, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-inline:after, .df-form-tabs form > .df-structure > .df-field .df-inline:after {
+  content: ":";
+}
+/* line 76, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update, .df-form-tabs form > .df-structure > .df-field .df-update {
+  position: relative;
+  max-width: 12rem;
+}
+/* line 79, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update .df-validation-msg, .df-form-tabs form > .df-structure > .df-field .df-update .df-validation-msg {
+  line-height: 0;
+  font-size: 0.8rem;
+  min-height: 0.8rem;
+  display: block;
+  color: red;
+  text-align: right;
+}
+/* line 88, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update input[type=checkbox], .df-form-tabs form > .df-structure > .df-field .df-update input[type=checkbox] {
+  box-shadow: none;
+  width: auto;
+}
+/* line 91, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update textarea, .df-form-tabs form > .df-structure > .df-field .df-update textarea {
+  resize: both;
+  margin-top: 0.5rem;
+  line-height: 1rem;
+  min-height: 5rem;
+}
+/* line 97, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.df-refers, .df-form-tabs form > .df-structure > .df-field .df-update.df-refers {
+  max-width: 17rem;
+}
+/* line 99, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.df-refers .select2-container, .df-form-tabs form > .df-structure > .df-field .df-update.df-refers .select2-container {
+  width: 180px;
+  margin-right: 3px;
+}
+/* line 102, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.df-refers [class^="btn-select2-"], .df-form-tabs form > .df-structure > .df-field .df-update.df-refers [class^="btn-select2-"] {
+  line-height: 1;
+  background: white;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+  display: inline-block;
+  padding: 2px 6px 3px;
+}
+/* line 51, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.df-refers [class^="btn-select2-"]:hover, .df-form-tabs form > .df-structure > .df-field .df-update.df-refers [class^="btn-select2-"]:hover {
+  background: #CCCCCC;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.df-refers [class^="btn-select2-"]:hover i, .df-form-tabs form > .df-structure > .df-field .df-update.df-refers [class^="btn-select2-"]:hover i {
+  opacity: 1;
+}
+/* line 55, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.df-refers [class^="btn-select2-"]:focus, .df-form-tabs form > .df-structure > .df-field .df-update.df-refers [class^="btn-select2-"]:focus {
+  outline: none;
+}
+/* line 57, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.df-refers [class^="btn-select2-"] i, .df-form-tabs form > .df-structure > .df-field .df-update.df-refers [class^="btn-select2-"] i {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+/* line 106, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update .df-view, .df-form-tabs form > .df-structure > .df-field .df-update .df-view {
+  font-weight: 300;
+}
+/* line 109, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field .df-update.valid-error input, .df-form-tabs form > .df-structure > .df-field .df-update.valid-error input {
+  background: #FFEAC8;
+}
+/* line 113, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-field.df-type-bool .df-update .df-validation-msg, .df-form-tabs form > .df-structure > .df-field.df-type-bool .df-update .df-validation-msg {
+  display: none;
+}
+/* line 18, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field .df-label.df-inline, .df-form-tabs form > .df-structure > .df-field .df-label.df-inline {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+}
+/* line 20, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field .df-label.df-inline.double-row, .df-form-tabs form > .df-structure > .df-field .df-label.df-inline.double-row {
+  line-height: 1.5rem;
+}
+/* line 22, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field > div, .df-form-tabs form > .df-structure > .df-field > div {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 75%;
+  float: left;
+  display: inline-block;
+}
+/* line 25, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-form-block {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p451/gems/susy-2.1.3/sass/susy/output/support/_clearfix.scss */
+.df-form-tabs form > .df-form-block:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 29, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-form-block h2 {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+/* line 33, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-form-block:first-child h2 {
+  margin-top: 0;
+}
+/* line 35, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-form-block .df-field {
+  position: relative;
+  line-height: 2.4rem;
+  box-sizing: border-box;
+}
+/* line 67, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-label.df-inline {
+  text-align: right;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+/* line 71, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-label.df-inline.double-row {
+  line-height: 1.5rem;
+}
+/* line 74, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-inline:after {
+  content: ":";
+}
+/* line 76, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update {
+  position: relative;
+  max-width: 12rem;
+}
+/* line 79, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update .df-validation-msg {
+  line-height: 0;
+  font-size: 0.8rem;
+  min-height: 0.8rem;
+  display: block;
+  color: red;
+  text-align: right;
+}
+/* line 88, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update input[type=checkbox] {
+  box-shadow: none;
+  width: auto;
+}
+/* line 91, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update textarea {
+  resize: both;
+  margin-top: 0.5rem;
+  line-height: 1rem;
+  min-height: 5rem;
+}
+/* line 97, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.df-refers {
+  max-width: 17rem;
+}
+/* line 99, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.df-refers .select2-container {
+  width: 180px;
+  margin-right: 3px;
+}
+/* line 102, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.df-refers [class^="btn-select2-"] {
+  line-height: 1;
+  background: white;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+  display: inline-block;
+  padding: 2px 6px 3px;
+}
+/* line 51, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.df-refers [class^="btn-select2-"]:hover {
+  background: #CCCCCC;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.df-refers [class^="btn-select2-"]:hover i {
+  opacity: 1;
+}
+/* line 55, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.df-refers [class^="btn-select2-"]:focus {
+  outline: none;
+}
+/* line 57, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.df-refers [class^="btn-select2-"] i {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+/* line 106, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update .df-view {
+  font-weight: 300;
+}
+/* line 109, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field .df-update.valid-error input {
+  background: #FFEAC8;
+}
+/* line 113, ../../../theme/ngApp/sass/common/_mixins1.sass */
+.df-form-tabs form > .df-form-block .df-field.df-type-bool .df-update .df-validation-msg {
+  display: none;
+}
+/* line 37, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-form-block .df-field.df-is-empty {
+  display: none;
+}
+
+/* line 44, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field.df-type-result > .df-view {
+  position: relative;
+  max-width: 150px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+}
+/* line 50, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field.df-type-result > .df-view span {
+  top: -5px;
+  right: -10px;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field.df-type-result .df-type-result-popup {
+  width: 770px;
+}
+/* line 55, ../../../theme/ngApp/sass/common/_form.sass */
+.df-form-tabs form > .df-field.df-type-result .df-type-result-popup > div {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+/* line 63, ../../../theme/ngApp/sass/common/_form.sass */
+#password-field {
+  overflow: auto;
+  position: relative;
+  line-height: 2.4rem;
+  box-sizing: border-box;
+  line-height: 2rem;
+}
+/* line 67, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-label.df-inline {
+  text-align: right;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+/* line 71, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-label.df-inline.double-row {
+  line-height: 1.5rem;
+}
+/* line 74, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-inline:after {
+  content: ":";
+}
+/* line 76, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update {
+  position: relative;
+  max-width: 12rem;
+}
+/* line 79, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update .df-validation-msg {
+  line-height: 0;
+  font-size: 0.8rem;
+  min-height: 0.8rem;
+  display: block;
+  color: red;
+  text-align: right;
+}
+/* line 88, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update input[type=checkbox] {
+  box-shadow: none;
+  width: auto;
+}
+/* line 91, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update textarea {
+  resize: both;
+  margin-top: 0.5rem;
+  line-height: 1rem;
+  min-height: 5rem;
+}
+/* line 97, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.df-refers {
+  max-width: 17rem;
+}
+/* line 99, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.df-refers .select2-container {
+  width: 180px;
+  margin-right: 3px;
+}
+/* line 102, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.df-refers [class^="btn-select2-"] {
+  line-height: 1;
+  background: white;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+  display: inline-block;
+  padding: 2px 6px 3px;
+}
+/* line 51, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.df-refers [class^="btn-select2-"]:hover {
+  background: #CCCCCC;
+}
+/* line 53, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.df-refers [class^="btn-select2-"]:hover i {
+  opacity: 1;
+}
+/* line 55, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.df-refers [class^="btn-select2-"]:focus {
+  outline: none;
+}
+/* line 57, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.df-refers [class^="btn-select2-"] i {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+/* line 106, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update .df-view {
+  font-weight: 300;
+}
+/* line 109, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field .df-update.valid-error input {
+  background: #FFEAC8;
+}
+/* line 113, ../../../theme/ngApp/sass/common/_mixins1.sass */
+#password-field.df-type-bool .df-update .df-validation-msg {
+  display: none;
+}
+
+/* line 72, ../../../theme/ngApp/sass/common/_form.sass */
+#Contact_password .df-btn-wrapper {
+  margin-top: -5px;
+}

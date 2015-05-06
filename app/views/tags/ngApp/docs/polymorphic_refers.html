@@ -1,0 +1,2 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.refers _arg, template: 'dict', debug: _debug, p: _p, s: _s, n: _n, d: _d /}

@@ -1,0 +1,12 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+if (_document.filters.size() > 1) {
+    out.print _p; }%<div class="df-list-filter">%{ out.print _n;
+    out.print _p + _s; }%<select ui-select2 ng-model='values.f' ng-change="update({'p':1,'f':values.f})"ng-init="values.f = query.f || '${_document.filters[0].name}'">%{ out.print _n;
+    out.print _p + _s; }%<div class="select-options" ng-show="fltrOpen">%{ out.print _n;
+        _document.filters.each { filter ->
+            out.print _p + _s + _s; }%<option value="${filter.name}">${messages.get(messages.get(filter.title)).escapeHtml()}</option>%{ out.print _n;
+        }
+    out.print _p + _s; }%</select>%{ out.print _n;
+    out.print _p; }%</div>%{ out.print _n;
+} }%
+

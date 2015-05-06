@@ -1,0 +1,8 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+                                                                                                // Attn: Here should be ng-show (NOT ng-if)!
+out.print _p; }%<div class="df-messages" docflow-actions-container="{errorOnly:${_errorOnly ?: false}}" ng-show="action.message">%{ out.print _n;
+    out.print _p + _s; }%<div class="df-msg-{{action.state}}">%{ out.print _n;
+        out.print _p + _s + _s; }%<button type="button" class="df-action-close close" ng-if="action.showClose" ng-click="action.hide()">&times;</button>%{ out.print _n;
+        out.print _p + _s + _s; }%<div docflow-actions-container-content></div>%{ out.print _n;
+    out.print _p + _s; }%</div>%{ out.print _n;
+out.print _p; }%</div>%{ out.print _n; }%

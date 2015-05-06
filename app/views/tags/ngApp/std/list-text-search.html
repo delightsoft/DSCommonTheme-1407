@@ -1,0 +1,5 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%<form class="df-list-search" ng-submit="update({'x':values.x})">%{ out.print _n;
+out.print _p + _s; }%<input type="text" ng-model="values.x" ng-init="values.x = query.x || ''">%{ out.print _n;
+out.print _p + _s; }%<span><button><i class="fa fa-search"></i></button></span>%{ out.print _n;
+out.print _p; }%</form>%{ out.print _n; }%

@@ -1,0 +1,6 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+    if (_debug) _arg.debugSmartTag('ngApp.docs', this);
+    _arg.smartTag('ngApp.docs', this, _debug, [p: _p + _s, s: _s, n: _n, d: _d]);
+}%#{/ngApp.std.form-field}

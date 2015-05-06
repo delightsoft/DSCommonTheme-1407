@@ -1,0 +1,16 @@
+<!-- TODO: Fix HTML layout -->
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+if (_debug) {
+    out.print _p;}%<i class="fa fa-wrench df-debug-icon" docflow-widget-popover>'%{ out.print _n;
+    out.print _p;}%<div class="popover"><div class="arrow"></div><h3 class="popover-title">Tags selection sequence:</h3>%{ out.print _n;
+    out.print _p + _s; }%<div class="popover-content"><ol style="width:270;">%{ out.print _n;
+    _arg.tagsSequence.each { tag ->
+        if (tag == _type) {
+            out.print _p + _s + _s; }%<li><b>app/view/tags/${_path}/${tag}.html</b></li>%{ out.print _n;
+        } else {
+            out.print _p + _s + _s; }%<li>app/view/tags/${_path}/${tag}.html</li>%{ out.print _n;
+        }
+    }
+    out.print _p + _s;}%</ol></div>%{ out.print _n;
+    out.print _p; }%</div></i>%{ out.print _n;
+} }%

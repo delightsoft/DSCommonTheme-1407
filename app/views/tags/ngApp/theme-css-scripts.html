@@ -1,0 +1,17 @@
+<!-- DSCommonTheme-1407 css and scripts -->
+
+%{ if (play.Play.mode == play.Play.Mode.PROD) { }%
+
+<link href="/static/ngApp/css/dscommon-theme-1407.min.css" media="all" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="@{'static/ngApp/js/dscommon-theme.min.js'}"></script>
+
+%{ } else { }%
+
+<link href="/static/ngApp/css/dscommon-theme-1407.css" media="all" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="@{'static/ngApp/js/coffee/theme/dfFormTabContent.js'}"></script>
+<script type="text/javascript" src="@{'static/ngApp/js/coffee/theme/dfLabel.js'}"></script>
+<script type="text/javascript" src="@{'static/ngApp/js/coffee/theme/dfList.js'}"></script>
+<script type="text/javascript" src="@{'static/ngApp/js/coffee/theme/templates.js'}"></script>
+<script type="text/javascript" src="@{'static/ngApp/js/coffee/theme.js'}"></script>
+
+%{ } }%

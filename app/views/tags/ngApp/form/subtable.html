@@ -1,0 +1,31 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+out.print _p + _s; }%<div class="df-view" ng-if="vu('${_arg.name}',item)">%{ out.print _n;
+out.print _p + _s + _s; }%<label class="df-validation-msg" ng-if='!hideValidation&&form.${_arg.name}.$error.required'>${messages.get("validation.emptySubtable")}</label>%{ out.print _n;
+out.print _p + _s + _s; }%<table class="df-subtable" docflow-widget-subtable="{field:'${_arg.name}'}" ng-model="$parent.${_arg.view ?: _arg.update}" name="${_arg.name}"%{ if (_arg.required) { }% required%{ }}%><thead><tr>%{ out.print _n;
+out.print _p + _s + _s + _s; }%<th class="df-subtable-line-index"></th>%{ out.print _n;
+out.print _p + _s + _s + _s; }%<th class="df-subtable-fields">%{ out.print _n;
+_arg.fields.each { field ->
+    field.smartTag('ngApp.form', this, _debug, [lbl: true, val: false, classes: _classes, p: (_p + _s + _s + _s + _s), s: _s, n: _n, d: _d]);
+}
+out.print _p + _s + _s + _s; }%</th>%{ out.print _n;
+if (_arg.update) {
+    out.print _p + _s + _s + _s; }%<th class="df-subtable-remove-icon" ng-if="u('${_arg.name}', $parent.$parent.item)"></th>%{ out.print _n;
+}
+out.print _p + _s + _s; }%</tr></thead><tbody>%{ out.print _n;
+out.print _p + _s + _s + _s; }%<tr ng-repeat="item in list" ng-form="form" docflow-hide-validation="{{item==newline}}">%{ out.print _n;
+out.print _p + _s + _s + _s + _s; }%<td class="df-subtable-line-index"><div ng-if="item!=newline"><span>{{$index+1}}</span></div></td>%{ out.print _n;
+out.print _p + _s + _s + _s + _s; }%<td class="df-subtable-fields">%{ out.print _n;
+_arg.fields.each { field ->
+        field.smartTag('ngApp.form', this, _debug, [lbl: true, val: true, classes: _classes, p: (_p + _s + _s + _s + _s + _s), s: _s, n: _n, d: _d]);
+}
+out.print _p + _s + _s + _s + _s; }%</td>%{ out.print _n;
+if (_arg.update) {
+    out.print _p + _s + _s + _s + _s; }%<td class="df-subtable-remove-icon" ng-if="u('${_arg.name}', $parent.$parent.item)">%{ out.print _n;
+    out.print _p + _s + _s + _s + _s + _s; }%<div ng-if="item!=newline" ng-click="remove(item)" class="btn-select2-add"><i class="fa fa-times-circle"></i></div>%{ out.print _n;
+    out.print _p + _s + _s + _s + _s; }%</td>%{ out.print _n;
+}
+out.print _p + _s + _s + _s; }%</tr>%{ out.print _n;
+out.print _p + _s + _s; }%</tbody></table>%{ out.print _n;
+out.print _p + _s; }%</div>%{ out.print _n;
+}%#{/ngApp.std.form-field}

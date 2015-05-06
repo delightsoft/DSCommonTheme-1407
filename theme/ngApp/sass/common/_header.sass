@@ -1,0 +1,163 @@
+@import compass/css3/border-radius
+
+@mixin header
+  $f-logo: 1.2rem
+  $f-item: 1rem * 14/16
+  // compute $h just small enough to contain $f-logo text
+  $h: vr($base-line-height)
+  $c: if($vr-debug == show, blue, white)
+  $b-color: black
+  $h-size: ms(0.3)
+
+  %menu-element
+    line-height: $h
+    display: inline-block
+    vertical-align: top
+    ul
+      list-style: none
+      margin: 0 0 0 1rem
+      padding: 0
+      a
+        @extend %menu-link
+
+  %menu-link
+    opacity: 0.6
+    padding-left: 10px
+    padding-right: 10px
+    cursor: pointer
+    &:hover
+      opacity: 1
+
+  header
+    @include container(100% 1 0 $vr-debug)
+    background: $b-color
+    line-height: $h
+    a
+      @include a-tag-without-hover-effect($c)
+    div.user
+      @extend %menu-element
+      position: absolute
+      right: 1rem
+      top: 0
+      background-color: #000000
+    .tasks
+      @extend %menu-element
+      position: absolute
+      right: 20rem
+      top: 0
+      background-color: #000000
+
+    div.logo
+      @extend %menu-element
+      font-size: $f-logo
+    nav
+      @extend %menu-element
+      *
+        @extend %menu-element
+        font-size: $f-item
+    .df-dropdown, div.user, .tasks
+      .dropdown-menu
+        background: #000000
+        border: none
+        max-width: none
+        min-width: 160px
+        @include border-radius(0 0 2px 2px)
+        li
+          a
+            color: white
+            padding: 0.3rem 1rem
+            line-height: 1
+            &:hover
+              color: #ccc
+              background-color: #4c4c4c
+    .tasks
+      .dropdown-toggle
+        position: relative
+        .tasks-badge
+          position: absolute
+          top: -6px
+          right: -14px
+          background-color: $color-green
+          border-radius: 10px
+          padding: 2px 6px
+          font-size: 0.8rem
+          display: block
+          line-height: 14px
+      .dropdown-menu
+        color: white
+        width: 25rem
+        left: -23rem
+        font-size: 0.8rem
+        line-height: 1.7
+        height: 20rem
+        .tasks-menu-footer
+          height: 30px
+          button
+            padding: 0.2rem 0.4rem
+            border-radius: 3px
+            text-align: center
+            float: right
+            margin-right: 0.5rem
+            border: none
+            margin-top: 0.4rem
+        &>ul
+          height: 18rem
+          overflow-y: scroll
+          li
+            padding: 1rem
+            margin-bottom: 0.3rem
+            &:hover
+              background-color: lighten(#000000, 20%)
+            div
+              overflow: auto
+            .col1
+              @include span(3 of 12)
+            .col2
+              @include span(8 of 12)
+              @include push(1 of 12)
+            .task-btn
+              padding: 0.2rem 0.4rem
+              border-radius: 3px
+              text-align: center
+              margin-bottom: 0.5rem
+            .task-state
+              &.finish
+                background-color: $color-green
+              &.process
+                background-color: $color-blue-light
+              &.wait
+                background-color: $color-blue-dark
+            .task-result
+              background-color: lighten($color-blue-light, 20%)
+              cursor: pointer
+              &:hover
+                background-color: lighten($color-blue-light, 10%)
+            .task-stop
+              background-color: $color-orange
+              cursor: pointer
+              &:hover
+                background-color: darken($color-orange, 10%)
+
+    @include breakpoint($narrow)
+      div.logo
+        margin-left: 1rem
+      nav
+        width: 100%
+
+    @include breakpoint($wide)
+      padding-left: $wide-border
+      div.user
+        right: $wide-border
+
+  .df-page-header
+    @include container(100% 1 0 $vr-debug)
+    background: $h-color
+    color: black
+    h2
+      line-height: vr(1.5)*1rem
+      font-weight: 400
+      margin: 0
+      padding-left: $wide-border
+      font-size: $h-size
+
+@include header

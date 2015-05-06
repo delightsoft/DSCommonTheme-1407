@@ -1,0 +1,43 @@
+<div class="modal-dialog df-modal-form">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div>
+                    <!-- Info messages -->
+                    #{ngApp.std.form-message p: p, s: s, n: n, d: d /}
+
+                    <!-- Item header -->
+                    <div class="df-page-header-panel"%{ def isFirst = true;
+                    document.states.each { state -> if (!state.color) return;
+                    if (isFirst) { out.print " ng-class=\"{"; isFirst = false; }
+                    else out.print ",";
+                    out.print "'color-${state.color}':item.state=='${state.name}'";
+                    }; if (!isFirst) out.print "}\""; }%>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="close" ng-click="$close()">&times;</button>
+                            <div ng-include="itemHeaderUrl"/>
+                        </div>
+                    </div>
+                </div>
+                <!--Main Area-->
+                <div ng-include="tab.angularTmpl" class="df-form-tabs"></div>
+                <script type="text/ng-template" id="/tmpl/doc/${document.name}?b=ngApp&t=mainTab">
+                    <div class="row" ng-controller="tab.controller" docflow-form>
+                        <div class="col-md-12">
+                            <!--Tabs -->
+                            #{ngApp.std.form-tabs document: document, template: template, debug: debug, item: item, tab: tab, p: p, s: s, n: n, d: d /}
+                            <!--Tab content -->
+                            <div class="tab-content" >
+                            #{ngApp.std.form document: document, template: template, debug: debug, p: p, s: s, n: n, d: d }
+                                #{ngApp.std.form-action-buttons document: document, template: template, debug: debug, p: p, s: s, n: n, d: d /}
+                            #{/ngApp.std.form}
+                            </div>
+                        </div>
+                    </div>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

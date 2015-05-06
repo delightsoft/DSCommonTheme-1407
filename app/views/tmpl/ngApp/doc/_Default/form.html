@@ -1,0 +1,55 @@
+%{ if (d) out.print "${p}<!-- Tmpl: ${tmplName.replace('.', '/') + '.html'} -->${n}"
+
+out.print p; }%<div id="form-${document.name}" class="df-screen-form">%{ out.print n;
+
+}%#{ngApp.std.form-message onlyError: true, p: (p + s), s: s, n: n, d: d /}%{
+
+out.print p + s; }%<div class="df-screen-header"%{
+    def isFirst = true;
+    document.states.each { state ->
+        if (state.color) {
+            if (isFirst) {
+                isFirst = false; out.print ' ng-class="{'
+            } else
+                out.print ','
+            }%'color-${state.color}':doc.state=='${state.name}'%{
+        }
+    }
+    if (!isFirst) out.print '}"';
+}%>%{ out.print n;
+out.print p + s + s; }%<div ng-include="itemHeaderUrl"/>%{ out.print n;
+out.print p + s + s; }%<ul class="df-form-header-tabs">%{ out.print n;
+out.print p + s + s + s; }%<li class="df-form-tab-main" ng-class="{active:(!($state.is('doc.${document.name}.form.history') || $state.is('doc.${document.name}.form.comments')))}">%{ out.print n;
+out.print p + s + s + s + s; }%<a ng-click="$state.transitionTo('doc.${document.name}.form', {id:$state.params.id})" ng-href="{{$state.href('doc.${document.name}.form', {id:$state.params.id})}}">&{'form.tab.form'}</a>%{ out.print n;
+out.print p + s + s + s; }%</li>%{ out.print n;
+out.print p + s + s + s; }%<li class="df-form-tab-comments" ng-class="{active:$state.is('doc.${document.name}.form.comments')}">%{ out.print n;
+out.print p + s + s + s + s; }%<a ng-click="$state.transitionTo('doc.${document.name}.form.comments', {id:$state.params.id})" ng-href="{{$state.href('doc.${document.name}.form.comments', {id:$state.params.id})}}">&{'form.tab.comments'}</a>%{ out.print n;
+out.print p + s + s + s; }%</li>%{ out.print n;
+out.print p + s + s + s; }%<li class="df-form-tab-history" ng-class="{active:$state.is('doc.${document.name}.form.history')}">%{ out.print n;
+out.print p + s + s + s + s; }%<a ng-click="$state.transitionTo('doc.${document.name}.form.history', {id:$state.params.id})" ng-href="{{$state.href('doc.${document.name}.form.history', {id:$state.params.id}) + '?history'}}">&{'form.tab.history'}</a>%{ out.print n;
+out.print p + s + s + s; }%</li>%{ out.print n;
+out.print p + s + s; }%</ul>%{ out.print n;
+out.print p + s; }%</div>%{ out.print n;
+
+if (d) out.print "${n}${p + s}<!-- main area -->${n}"
+out.print p + s; }%<div ng-include="tab.angularTmpl" class="container df-form-tabs"></div>%{ out.print n;
+
+out.print p; }%</div>%{ out.print n;
+
+if (d) out.print "${n}${p}<!-- main tab template -->${n}"
+out.print p; }%<script type="text/ng-template" id="/tmpl/doc/${document.name}?b=ngApp&t=mainTab">%{ out.print n;
+out.print p + s; }%<div ng-controller="tab.controller" docflow-form>%{ out.print n;
+
+    }%#{ngApp.std.form-tabs document: document, template: template, debug: debug, item: item, tab: tab, p: (p + s + s), s: s, n: n, d: d /}%{
+
+    out.print p + s + s; }%<div class="df-form-tab-content" docflow-resize-item-content="{contentClass:'.df-form', bottomClass: '.df-footer'}">%{ out.print n;
+
+    }%#{ngApp.std.form document: document, template: template, debug: debug, p: (p + s + s + s), s: s, n: n, d: d }%{
+        if (d) out.print "${n}${p + s + s + s + s}<!-- Actions -->${n}"
+        }%#{ngApp.std.form-action-buttons document: document, template: template, debug: debug, p: (p + s + s + s + s), s: s, n: n, d: d /}%{
+    }%#{/ngApp.std.form}%{
+
+    out.print p + s + s; }%</div%{ out.print n;
+
+out.print p + s; }%</div>%{ out.print n;
+out.print p; }%</script>%{ out.print n; }%

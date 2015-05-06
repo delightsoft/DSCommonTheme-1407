@@ -1,0 +1,37 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%<div class='df-footer'>%{ out.print _n;
+def editorDocTmpl = _item ? _document.model.getDocumentByName(_item).getTemplateByName('form') : _template
+def linkedDocumentAction = _template.getActionByName('create')
+def create = editorDocTmpl.getActionByName('create')
+def update = editorDocTmpl.getActionByName('update')
+if (_d) out.print "${_p + _s}<!-- Create/Update actions -->${_n}"
+if (linkedDocumentAction) {
+    out.print _p + _s; }%<button class="df-action df-action-create" ng-disabled="!editor.modified || editor.upload" ng-if="tab.isNew && editor.isNew != tab.isNew" ng-click="editor.save()">&{messages.get(linkedDocumentAction.title)}</button>%{ out.print _n;
+}
+if (create) {
+    out.print _p + _s; }%<button class="df-action df-action-create" ng-disabled="!editor.modified || editor.upload" ng-if="editor.isNew && editor.doc._a.create && editor.isNew == tab.isNew" ng-click="editor.save()">&{messages.get(create.title)}</button>%{ out.print _n;
+}
+if (update) {
+    out.print _p + _s; }%<button class="df-action df-action-update" ng-disabled="!editor.modified || editor.upload" ng-if="!editor.isNew && editor.doc._a.update && editor.isNew == tab.isNew" ng-click="editor.save()">&{messages.get(update.title)}</button>%{ out.print _n;
+}
+if (_d) out.print "${_p + _s}<!-- Main (not marked as 'other') display actions -->${_n}"
+_template.actions.each { action ->
+    if (!action.display || action.outOfForm || action.other || action.name == 'create' || action.name == 'update') return;
+    out.print _p + _s; }%<button class="df-action df-action-${action.name}" ng-if="${("item._a.${action.name}" + (action.ngif ? (' && (' + action.ngif) + ')' : '')).raw()}" ng-disabled="${action.ngdisabled ?: action.update ? '' : 'editor.modified || editor.upload'}" ng-click="${action.script ?: "tab.action('${action.name}')"}">&{messages.get(action.title)}</button>%{ out.print _n;
+}
+if (_template.actions.any { action -> action.other }) {
+    if (_d) out.print "${_p + _s}<!-- Other display actions -->${_n}"
+    out.print _p + _s; }%<div class="df-dropdown actions-group up" docflow-container dropdown-toggle>%{ out.print _n;
+    out.print _p + _s + _s; }%<button class="dropdown-toggle"><i class="fa fa-angle-double-up"></i></button>%{ out.print _n;
+    out.print _p + _s + _s; }%<ul class="dropdown-menu">%{ out.print _n;
+    _template.actions.each { action -> if (!action.display || !action.other) return;
+        out.print _p + _s + _s + _s; }%<li>%{ out.print _n;
+            out.print _p + _s + _s + _s + _s; }%<a class="df-action df-action-${action.name}" ng-if="${("item._a.${action.name}" + (action.ngif ? (' && (' + action.ngif) + ')' : '')).raw()}" docflow-container-item-show="${("item._a.${action.name}" + (action.ngif ? (' && (' + action.ngif) + ')' : '')).raw()}" ng-disabled="${action.ngdisabled ?: action.update ? '' : 'editor.modified || editor.upload'}" ng-click="${action.script ?: "tab.action('${action.name}')"}">&{messages.get(action.title)}</a>%{ out.print _n;
+        out.print _p + _s + _s + _s; }%</li>%{ out.print _n;
+    }
+    out.print _p + _s + _s; }%</ul>%{ out.print _n;
+    out.print _p + _s; }%</div>%{ out.print _n;
+}
+if (_d) out.print "${_p + _s}<!-- Cancel action -->${_n}"
+out.print _p + _s; }%<button class="df-action df-action-cancel" ng-if="editor.doc._a.create || editor.doc._a.update" ng-disabled="!editor.modified || editor.upload" ng-click="editor.cancel()">${messages.get('form.cancel')}</button>%{ out.print _n;
+out.print _p; }%</div>%{ out.print _n; }%

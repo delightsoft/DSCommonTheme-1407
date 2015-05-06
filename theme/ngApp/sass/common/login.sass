@@ -1,0 +1,55 @@
+
+#ad-login
+  margin-top: 5rem
+  @include layout(12)
+  .wrapper
+    @include pre(3)
+    @include span(6)
+    #system-logo
+      text-align: center
+      img
+        width: 100%
+        max-width: 448px
+    .block-message-error
+      @include layout(12)
+      @include span(6)
+      @include pre(3)
+      span
+        display: block
+        margin-bottom: 0.5rem
+        padding: 0.5rem
+        background-color: $color-error
+        color: white
+    form
+      @include layout(12)
+      @include span(6)
+      @include pre(3)
+      .input
+        width: 100%
+        overflow: hidden
+        margin-bottom: 0.5rem
+        &.error
+          input
+            background-color: #F9E4A7
+        input
+          display: block
+          box-sizing: border-box
+          width: 100%
+          padding: 0.7rem
+          font-size: 1rem
+      .btn-login
+        @extend %df-button
+        width: 100%
+        background-color: $color-green
+        &:hover
+          background-color: darken($color-green, 10%)
+    .providers
+      @include layout(12)
+      @include span(6)
+      @include pre(3)
+      img
+        height: 2.5rem
+        opacity: 0.5
+        &:hover
+          opacity: 1
+

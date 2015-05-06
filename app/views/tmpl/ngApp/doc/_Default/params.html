@@ -1,0 +1,25 @@
+<div>
+    <!-- Info messages -->
+#{ngApp.std.form-message p: p, s: s, n: n, d: d /}
+
+    <div class="df-page-header-panel">
+        <button type="button" class="close" ng-click="$close()">&times;</button>
+        <h4>&{action.title}</h4>
+    </div>
+</div>
+<div class="modal-body">
+    <!-- Parameters form -->
+    <form name="form" novalidate class="form-horizontal" docflow-form>
+        <!-- Form -->
+    %{ action.params.each { param ->
+        if (debug) param.debugSmartTag('ngApp.form', this)
+        param.smartTag('ngApp.form', this, debug, [lbl:true, val: true, p: (p + s), s: s, n: n, d: d]) } }%
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="df-modal-btn-group">
+        <button ng-click="ok()">&{'form.ok'}</button>
+        <button ng-click="$dismiss()">&{'form.cancel'}</button>
+    </div>
+</div>
+

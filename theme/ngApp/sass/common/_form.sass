@@ -1,0 +1,73 @@
+.df-form-tabs
+  form
+    font-size: $f-size
+    padding-top: vr(1) * 1rem
+    padding-bottom: vr(6) * 1rem
+    @include container(100% 1 0 $vr-debug)
+    @include breakpoint($wide)
+    font-family: Roboto,Arial,Helvetica,sans-serif
+    font-weight: 300
+    &>.df-field.df-is-empty
+      display: none
+    &>.df-field, &>.df-structure > .df-field
+      @include container
+      @include span(6 of 12 break)
+      @include df-field
+      padding-left: $wide-border
+      padding-right: $wide-border
+      .df-label.df-inline
+        @include span(1 of 4)
+        &.double-row
+          line-height: 1.5rem
+      &>div
+        @include span(3 of 4)
+        display: inline-block
+    &>.df-form-block
+      @include container
+      margin-left: $wide-border
+      margin-right: $wide-border
+      h2
+        margin-bottom: 1rem
+        margin-top: 2rem
+      &:first-child
+        h2
+          margin-top: 0
+      .df-field
+        @include df-field
+        &.df-is-empty
+          display: none
+
+
+.df-form-tabs
+  form > .df-field
+    &.df-type-result
+      &>.df-view
+        position: relative
+        max-width: 150px
+        cursor: pointer
+        font-size: 0.9rem
+        text-align: center
+        span
+          top: -5px
+          right: -10px
+      .df-type-result-popup
+        width: 770px
+        &>div
+          height: 300px
+          overflow-y: scroll
+
+
+
+
+
+#password-field
+  overflow: auto
+  @include df-field
+  line-height: 2rem
+  .df-btn-password
+    @extend %df-button
+
+#Contact_password
+  @extend %df-button
+  .df-btn-wrapper
+    margin-top: -5px

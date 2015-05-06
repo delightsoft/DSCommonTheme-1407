@@ -1,0 +1,29 @@
+<!-- TODO: Fix HTML layout -->
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+if (_debug)
+_arg.debugSmartTag('ngApp.docs', this);
+}%#{ngApp.std.input-frame _arg, debug: _debug, p: _p, s: _s, n: _n, d: _d }%{
+out.print _p; }%<table class="df-table-input-element" ng-if="u('${_arg.name}',item)" ng-model="$parent.item.${_arg.name}" name="${_arg.name}"%{
+if (_arg.required) { }% required%{ } }%
+}%docflow-widget-tags='{docType:"${_arg.tagsDocType}",template:"dict"}'>%{ out.print _n;
+out.print _p + _s; }%<tr>%{ out.print _n;
+    out.print _p + _s + _s; }%<td>%{ out.print _n;
+        out.print _p + _s + _s + _s; }%<input docflow-select2 type="hidden">&nbsp;%{ out.print _n;
+        out.print _p + _s + _s; }%</td>%{ out.print _n;
+    def checks = ['required']
+    // TODO: Check: ngApp.std.input-frame-validation missing
+    if (checks.any { err -> _arg[err] }) {
+    out.print _p + _s + _s; }%<td class='warning-sign-td'>%{ out.print _n;
+        out.print _p + _s + _s + _s; }%<i ng-if='!hideValidation&&form.${_arg.name}.$invalid' class='fa fa-warning' docflow-widget-popover="{trigger:'hover',placement:'right'}">%{ out.print _n;
+            out.print _p + _s + _s + _s + _s; }%<div class='popover'>%{ out.print _n;
+                out.print _p + _s + _s + _s + _s + _s; }%<div class='arrow'></div>%{ out.print _n;
+                out.print _p + _s + _s + _s + _s + _s; }%<div class='popover-content'>%{ out.print _n;
+                    checks.each { err -> if (_arg[err]) {
+                    out.print _p + _s + _s + _s + _s + _s + _s; }%<label ng-if='form.${_arg.name}.$error.${err}'>${messages.get("validation." + err, _arg[err])}</label>%{ out.print _n;
+                    }}
+                    out.print _p + _s + _s + _s; }%</div></div></i>%{ out.print _n;
+        out.print _p + _s + _s; }%</td>%{ out.print _n;
+    }
+    out.print _p + _s; }%</tr>%{ out.print _n;
+out.print _p; }%</table>%{ out.print _n;
+}%#{/ngApp.std.input-frame}

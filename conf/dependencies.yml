@@ -1,0 +1,4 @@
+self: play -> DSCommonTheme-1407 0.1
+
+require:
+    - play

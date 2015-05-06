@@ -1,0 +1,7 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+    out.print _p + _s; }%<a ng-if='item.id' ng-href="{{$docflow.hrefOpenDoc(item.id)}}">%{ out.print _n;
+    out.print _p + _s + _s; }%<span class="label label-info value-{{${_arg.view}}}" docflow-state ng-model='item'></span>%{ out.print _n;
+    out.print _p + _s; }%</a>%{ out.print _n;
+}%#{/ngApp.std.form-field}

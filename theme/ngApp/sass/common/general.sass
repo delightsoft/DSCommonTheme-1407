@@ -1,0 +1,557 @@
+@import compass/css3/border-radius
+
+$footer-h: vr(2) * 1rem
+$vr-debug: hide
+$f-size: $base-font-size
+$footer-color: white
+$footer-border-color: #e6e6e6
+$h-color: #e6e6e6
+
+//media
+$break-small:   768px
+$break-medium:  992px
+$break-large:  1200px
+
+
+input[type=number]
+  -moz-appearance: textfield
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+input
+  &:focus
+    outline: 0
+
+
+%df-button
+  color: #000
+  border: 1px solid #bfbfbf
+  @include border-radius(2px)
+  font-weight: 300
+  padding: 0 8px
+  cursor: pointer
+  text-decoration: none
+  text-align: center
+  display: inline-block
+  vertical-align: middle
+  white-space: nowrap
+  line-height: 2.5
+  font-size: $f-size
+  background: white
+  &:hover
+    text-decoration: none
+    color: #000
+    background: #ccc
+    border: 1px solid #b3b3b3
+    box-shadow: rgba(0,0,0,.2) 0 1px 1px
+  &:focus
+    outline: 0
+  &:disabled
+    color: #CCCCCC
+    cursor: auto
+    border: 1px solid #CCCCCC
+    &:hover
+      background: #ffffff
+      color: #CCCCCC
+      border: 1px solid #CCCCCC
+      box-shadow: rgba(0,0,0,0) 0 0px 0px
+
+.df-btn
+  @extend %df-button
+
+//----- Footer
+
+.df-footer
+  @include container(100% 1 0 $vr-debug)
+  position: fixed
+  bottom: 0
+  height: $footer-h
+  border: 1px solid $footer-border-color
+  background: $footer-color
+  width: 100%
+  button
+    margin-top: vr(0.2) * 1rem
+    margin-right: 0.5rem
+  @include breakpoint($wide)
+    padding-left: $wide-border + 11%
+    padding-right: $wide-border
+  .df-dropdown
+    display: inline-block
+  .df-action-cancel
+    position: absolute
+    top: 0
+    right: $wide-border
+
+
+button.df-action, button.dropdown-toggle
+  @extend %df-button
+  i
+    margin: 0
+  &:hover
+    background: #ccc
+
+//----- Dropdown
+
+.df-dropdown
+  position: relative
+  .dropdown-menu
+    position: absolute
+    left: 0
+    z-index: 1000
+    display: none
+    float: left
+    height: auto
+    width: auto
+    min-width: 10em
+    max-width: 12em
+    list-style: none
+    margin: 0
+    padding: .35em 0
+    font-size: $f-size
+    @include border-radius(2px)
+    background-color: #ffffff
+    border: 1px solid #d9d9d9
+    font-weight: 300
+    li
+      width: auto
+      height: auto
+      min-height: auto
+      display: list-item
+      float: none
+      margin: 0
+      text-align: left
+      text-transform: none
+      padding: 0
+      position: relative
+      list-style-type: none
+      &.separator-above
+        margin-top: .5rem
+        padding-top: .5rem
+        border-top: 1px solid darkgrey
+      a
+        color: #444
+        padding: 0.2rem .8rem
+        display: block
+        clear: both
+        cursor: pointer
+        &:hover
+          background: #f2f2f2
+          text-decoration: none
+  &.up.open
+    .dropdown-menu
+      display: block!important
+      bottom: 100%
+  &.down.open
+    .dropdown-menu
+      display: block!important
+      top: 100%
+      left: -50%
+
+
+// ---- Form header
+
+.df-screen-header
+  position: relative
+  background: #50B9D7
+  padding: 0.5rem 0
+  .df-form-title
+    margin-top: 0
+    padding-left: $wide-border
+    font-size: 1.3rem
+    font-weight: 400
+  .title-state
+    opacity: 0.5
+    padding-left: 1rem
+  .df-form-header-tabs
+    position: absolute
+    right: 0
+    bottom: 0
+    margin-bottom: 0!important
+    border-bottom-color: #e6e6e6
+    font-weight: 200
+    font-size: 1rem
+    margin-right: $wide-border
+    list-style: none
+    li
+      float: left
+      margin-bottom: -1px
+      position: relative
+      display: block
+      a
+        position: relative
+        display: block
+        text-decoration: none
+        padding: 0.5rem 1rem
+        color: #000
+        margin-right: 2px
+        line-height: 1.5
+        border: 1px solid transparent
+      &.active
+        a
+          color: #000
+          background-color: #fff
+          border-color: #fff
+          cursor: default
+
+
+
+
+
+//----- Form body
+
+%df-input
+  @include border-radius(2px)
+  padding: 1px 6px
+  border: none
+  resize: none
+  background: rgba(#EEEEEE, 0.4)
+  vertical-align: middle
+  box-shadow: rgba(0,0,0,.2) 0 1px 2px inset
+  width: 100%
+  box-sizing: border-box
+  &:focus
+    border-color: rgba(153,153,153,.9)
+    background: rgba(#EEEEEE, 1)
+    outline: 0 none
+  &.df-invalid
+    background: #FFEAC8
+
+
+
+
+
+
+.df-field.df-type-file
+  overflow: auto
+  label
+    @include span(1 of 3)
+    &:after
+      content: ':'
+  &>div
+    @include span(2 of 3)
+  a, span
+    display: block
+    float: left
+    width: 170px
+    height: 1.5rem
+    overflow: hidden
+    text-overflow: ellipsis
+    margin-top: 0.5rem
+    margin-right: 0.5rem
+    padding: 0 5px 0 5px
+    line-height: 1.5
+  .upload-process-wrapper
+    background: #F7F7F7
+    position: relative
+    .upload-process
+      @include transition(all 1.5s ease-in-out)
+      position: absolute
+      top: -0.5rem
+      left: -1rem
+      width: 0px
+      background: darken(#F7F7F7, 20%)
+      opacity: 0.5
+      z-index: 100
+
+  button
+    @include refers-btn
+
+
+//---- Select 2
+
+.select2-container
+  width: 100%
+  &:focus
+    outline: 0 none
+  .select2-choice
+    @include border-radius(2px)
+    padding: 1px 6px
+    background: rgba(#EEEEEE, 0.4)
+    box-shadow: rgba(0,0,0,.2) 0 1px 2px inset
+    background-image: none
+    border: none
+    height: 1.3rem
+    line-height: 1.3rem
+    //padding: 2px 6px
+    .select2-arrow
+      border-radius: 0px
+      background-image: none
+      background: none
+      border: none
+      b
+        background-position: 0 -1px
+
+.select2-search input
+  border: 1px solid #c6c6c6
+
+.select2-drop-active
+  border: none
+  box-shadow: rgba(0,0,0,.2) 0px 2px 5px
+  border-radius: 0px
+  background: rgba(#EEEEEE, 1)
+
+.select2-dropdown-open .select2-choice
+  background: rgba(#EEEEEE, 1)
+  box-shadow: rgba(0,0,0,.2) 0px 1px 5px
+
+.select2-results
+  font-weight: 300
+  .select2-highlighted
+    color: #000000
+    background: lighten(rgba(#EEEEEE, 1), 10%)
+
+
+
+
+
+//---- Tabs
+
+#item-form-tabs
+  display: block
+  border-bottom: 1px solid #ddd
+  padding-left: 0
+  list-style: none
+  margin-left: $wide-border
+  margin-right: $wide-border
+  font-weight: 100
+  &>li
+    position: relative
+    display: inline-block
+    margin-bottom: -1px
+    &>a
+      position: relative
+      display: block
+      @include padding-in-rem(10, 15, 10, 15)
+      margin-right: 2px
+      line-height: vr(0.5)*1rem
+      border: 1px solid transparent
+      border-radius: 2px 2px 0 0
+      cursor: pointer
+      &:hover
+        background-color: #eee
+        border-color: #eee #eee #ddd
+      .tab-sign-edited-icon
+        position: absolute
+        right: 2/16 * 1rem
+        top: 2/16 * 1rem
+        font-size: 8/16 * 1rem
+        color: red
+    &.active
+      &>a
+        color: #555
+        cursor: default
+        background-color: #fff
+        border: 1px solid #ddd
+        border-bottom-color: transparent
+    .tab-sign-edited-icon
+      display: none
+    .tab-sign-edited
+      .tab-sign-edited-icon
+        display: block
+
+.df-form-tab-content
+  .df-form
+    overflow: auto
+    overflow-x: hidden
+
+// --- Selector
+%add-icon
+  position: absolute
+  opacity: .3
+  font-size: 1rem
+  top: 0
+  cursor: pointer
+  &:hover
+    opacity: .8
+
+.df-selector
+  position: relative
+  max-width: 12rem
+  input
+    @extend %df-input
+  .inpt-caret
+    position: absolute
+    right: 5px
+    top: 3px
+    opacity: 0.5
+    i
+      font-size: 14px
+      cursor: pointer
+  .add
+    @extend %add-icon
+    right: -1.5rem
+  .forward
+    @extend %add-icon
+    right: -3rem
+  .clear
+    @extend %add-icon
+    right: -4.5rem
+  .select-options
+    position: absolute
+    top: 95%
+    list-style-type: none
+    padding-left: 0
+    margin: 0
+    overflow-y: scroll
+    overflow-x: hidden
+    max-height: 120px
+    width: 12rem
+    z-index: 1000
+    background: white
+    border: 1px solid #cdcdcd
+    li
+      display: block
+      padding: 5px 10px
+      line-height: 1
+      cursor: pointer
+      &:hover
+        background: darken(#cdcdcd, 10%)
+
+
+
+
+//------Subtable
+
+.df-subtable
+  width: 100%
+  tr
+    .df-field
+      @include span(2 of 12)
+      margin-right: 1rem
+      &.df-type-string, &.df-type-date
+        @include span(3 of 12)
+      &.df-type-bool
+        @include span(1 of 12)
+        .df-update
+          text-align: center
+    .btn-select2-add
+      cursor: pointer
+    &:hover
+      .btn-select2-add
+        opacity: 0.5
+    label.df-inline
+      display: none
+    .df-subtable-line-index
+      width: 1.5rem
+      text-align: right
+      padding-right: 0.3rem
+
+
+//----- Messages
+
+.df-msg-prototype
+  position: fixed
+  z-index:  100
+  top: 38px
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2)
+  p
+    margin: 0
+  .close
+    display: block
+    float: right
+    margin-top: -5px
+    margin-right: -4px
+    font-size: 1rem
+    border: none
+    background: none
+    outline: none
+    &:hover
+      color: #CCCCCC
+  &>div
+    float: left
+  ul
+    display: inline-block
+    list-style: none
+    margin: 0!important
+    padding: 7px
+    li.error:before
+      position: absolute
+      font-family: FontAwesome
+      left: 8px
+      content: "\f105"
+      opacity: 0.7
+
+.df-msg-failed
+  @extend .df-msg-prototype
+  min-width: 400px
+  background-color: #cd5c5c
+  color:  #fff
+  padding: 5px 10px
+  left: 16.666666666666664%
+  top:  45px
+  @include border-radius (5px)
+
+.df-msg-done
+  @extend .df-msg-prototype
+  left: 40%
+  border-color: #f0c36d
+  background-color: #f9edbe
+  padding: 0 10px
+  border: 1px solid transparent
+  @include border-radius (2px)
+
+.df-msg-progress
+  @extend .df-msg-done
+
+
+
+.df-btn-upload input[type=file]
+  width: 150px
+  height: 40px
+  position: absolute
+  right: 0
+  top: 0
+  cursor: pointer
+  opacity: 0
+
+
+.df-type-result-popup
+  position: absolute
+  z-index: 1000
+  top: 30px
+  width: 670px
+  padding: 2rem
+  background-color: lighten(#cccccc, 10%)
+  border: 1px solid #cccccc
+  border-radius: 5px
+  &>div
+    height: 300px
+    overflow-y: scroll
+  .close
+    position: absolute
+    cursor: pointer
+    top: 5px
+    right: 5px
+    font-size: 1.2rem
+    opacity: 0.5
+    font-weight: bold
+  .result-text
+    height: 500px
+    overflow-y: scroll
+    border: 1px solid #cccccc
+    background-color: white
+    border-radius: 5px
+    padding: 1rem
+    &::-webkit-scrollbar
+      display: none
+    &>ul>li
+      margin-bottom: 1rem
+
+%badge
+  display: block
+  position: absolute
+  border-radius: 10px
+  padding: 3px 4px
+  font-size: 10px
+  line-height: 8px
+
+.result-badge
+  @extend %badge
+  top: 0px
+  right: 40px
+  background-color: darkgray
+  color: white
+  border: 2px solid white

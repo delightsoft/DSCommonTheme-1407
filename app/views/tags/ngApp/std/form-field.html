@@ -1,0 +1,24 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%<div class='df-field ${_arg.classAttr}${_classes ? (" " + _classes) : ""}'%{
+if (_val) {
+    }% ng-class='%{
+    if (_arg.view && _arg.update) {
+        }%{"df-is-update": u("${_arg.name}", item), "df-is-empty": !vu("${_arg.name}", item)}%{
+    } else if (_arg.view) {
+        }%{"df-is-empty": !v("${_arg.name}", item)}%{
+    } else {
+        }%{"df-is-update": u("${_arg.name}", item), "df-is-empty": !u("${_arg.name}", item)}%{
+    }
+    }%'%{
+    if (_extra) {
+        }% ${_extra}%{
+    }
+}
+}% docflow-id-scope>%{ out.print _n;
+if (_lbl) {
+    out.print _p + _s; }%<label class='df-label ${_lbl && !_val ? "df-header" : "df-inline"}'%{ if (_val) { }% docflow-for='df'%{ } }%>${messages.get(messages.get(_arg.title))}</label>%{ out.print _n;
+}
+if (_val) {
+}%#{doBody /}%{
+}
+out.print _p; }%</div>%{ out.print _n; }%

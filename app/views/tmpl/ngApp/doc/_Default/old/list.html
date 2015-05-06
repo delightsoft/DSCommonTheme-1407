@@ -1,0 +1,111 @@
+
+<!--<div class="df-overflow-x-hidden">  'df-overflow-x-hidden' causes actions menu in some cases be almost invisible -->
+<div>
+    <!-- List header -->
+    <div class="df-page-header-panel">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>&{document.title + '.tmpl.list'}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div >
+        <div class="row">
+            <div class="col-md-12">
+                <docflow-table doc-type="${document.name}" params='{"t":"list"}' url-prefix="l">
+                    <div class="row df-table-filters">
+                        <!-- Filterign, sorting and other actions -->
+                        <!-- Text to search -->
+                        <div class="col-md-3 col-sm-3">
+                            <form class="form-inline" value="" ng-submit="update({'x':values.x})">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" ng-model="values.x"
+                                           ng-init="values.x = query.x || ''">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                  </span>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-9 col-sm-9 df-other-button-col">
+                            <!-- Filtering rules -->
+                        %{ if (document.filters.size() > 1) { }%
+                            <div>
+                                <select ui-select2 class="input-medium" ng-model='values.f'
+                                        ng-change="update({'p':1,'f':values.f})"
+                                        ng-init="values.f = query.f || '${document.filters[0].name}'">
+                                %{ document.filters.each { filter -> }%
+                                    <option value="${filter.name}">${messages.get(messages.get(filter.title)).escapeHtml()}</option>
+                                %{ } }%
+                                </select>
+                            </div>
+                        %{ } }%
+                            <!-- Sorting rules -->
+                        %{ if (document.sortOrders.size() > 1) { }%
+                            <div>
+                                <select ui-select2 ng-model='values.o' class="input-medium"
+                                        ng-change="update({'p':1,'o':values.o,'desc':'0'})"
+                                        ng-init="values.o = query.o || '${document.sortOrders[0].name}'; values.desc=query.desc">
+                                %{ document.sortOrders.each { sortOrder -> }%
+                                    <option value="${sortOrder.name}">${messages.get(messages.get(sortOrder.title))}</option>
+                                %{ } }%
+                                </select>
+                            </div>
+                            <div class="df-sort-arrow" ng-if="$angular.isDefined(values.desc)" ng-click="values.desc=values.desc=='1'?'0':'1'; update({'p':1,'desc':values.desc})">
+                                <i ng-class="{'fa-chevron-circle-up': values.desc=='1', 'fa-chevron-circle-down': values.desc!='1'}" class="fa"></i>
+                            </div>
+                        %{ } }%
+                            <!-- Actions drop-down button -->
+                            <div docflow-container class="df-list-actions-btn">
+                                <div class="btn-group">
+                                    <button type="button" class="btn df-btn-page-header-panel dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-angle-double-down"></i>
+                                        *{&{'list.actions'} <span class="caret"></span>}*
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li docflow-container-item-show="$docflow.config.docs['${document.name}'].actions.create"><a ng-click="$docflow.createDoc('${document.name}')">&{'form.createNew'}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Refresh table action -->
+                            <div>
+                                <button class="btn df-btn-page-header-panel df-list-refresh-btn" ng-click="update()">
+                                    <i class="fa fa-repeat"></i></button>
+                            </div>
+                            <!-- Table -->
+                        </div>
+                    </div>
+
+                    <div class="row"
+                         docflow-resize-item-content="{contentClass:'.df-list-table', bottomClass: '.df-list-table-pagination'}">
+                        <div class="col-md-12">
+                        <div class="row">
+                            <div ng-if="list" class="col-md-12 df-list-table-header df-screen-sm-display-none">
+                                <div class="row">
+                                    %{ template.columns.each { column -> column.smartTag('ngApp.table', this, debug, [header: column.title, p: p, s: s, n: n, d: d]) } }%
+                                </div>
+                            </div>
+                            <div class="col-md-12 df-list-table">
+                                <div class="row" ng-repeat="item in list" docflow-form>
+                                    %{ template.columns.each { column -> column.smartTag('ngApp.table', this, debug, [p: p, s: s, n: n, d: d]) } }%
+                                </div>
+                                <div ng-if="!list" class="df-list-search-nothing"><strong>&{'field.message.search.nothing'}</strong></div>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- Pager -->
+                        <div class="row df-list-table-pagination">
+                            <div ng-show="query.p > 0 && query.c > 1" class="col-md-12 pull-right">
+                                <pagination boundary-links="true" total-items="query.c" items-per-page="1" page="query.p"
+                                            max-size="pagingSize" on-select-page="onSelectPage(page)"></pagination>
+                            </div>
+                        </div>
+                    </div>
+                </docflow-table>
+            </div>
+        </div>
+    </div>
+</div>

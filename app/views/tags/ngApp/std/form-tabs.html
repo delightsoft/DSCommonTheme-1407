@@ -1,0 +1,26 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+def tabs = _template.tabs;
+def item = _document;
+if (_item) {
+    item = _document.model.getDocumentByName(_item)
+    if (item) {
+        def itemTemplate = item.getTemplateByName('form');
+        if (itemTemplate) tabs = itemTemplate.tabs;
+    }
+}
+if (tabs) {
+    out.print _p; }%<ul class="df-form-tabs" id="item-form-tabs">%{ out.print _n;
+    if (!_tab) { _tab = '_main' }
+        tabs.each { tab ->
+        if (tab.name == _tab) {
+        out.print _p + _s; }%<li class="active"><a ng-class="{'tab-sign-edited':editor.tabs.${tab.name}.modified}">%{ out.print _n;
+            out.print _p + _s + _s; }%${messages.get(messages.get(tab.title))}%{ out.print _n;
+        our.print _p + _s; }%<i class="fa fa-asterisk tab-sign-edited-icon"></i></a></li>%{ out.print _n;
+      } else {
+        out.print _p + _s; }%<li><a ng-click="editor.selectTab('${tab.name}')" ng-if="editor.tabs.${tab.name}.visible" ng-class="{'tab-sign-edited':editor.tabs.${tab.name}.modified}">%{ out.print _n;
+            out.print _p + _s + _s; }%${messages.get(messages.get(tab.title))}%{ out.print _n;
+        out.print _p + _s; }%<i class="fa fa-asterisk tab-sign-edited-icon"></i></a></li>%{ out.print _n;
+      }
+    }
+    out.print _p; }%</ul>%{ out.print _n;
+} }%

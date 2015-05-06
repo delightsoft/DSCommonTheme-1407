@@ -1,0 +1,13 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+    if (_arg.view) {
+        out.print _p + _s; }%<div class="df-view" ng-if='v("${_arg.name}", item)'>{{${_arg.view} | date:'dd.MM.yy '}}</div>%{ out.print _n;
+    }
+    if (_arg.update) {
+        out.print _p + _s; }%<div class="df-update" ng-if='u("${_arg.name}", item)' docflow-widget-date ng-model='${_arg.update}'%{ if (_arg.required) out.print " required"; }%>%{ out.print _n;
+        out.print _p + _s + _s; }%<input class='grd-white form-control' docflow-id='df' name='${_arg.name}' type='text' ng-class="{'input-valid-error': form.${_arg.name}.$invalid}"/>%{ out.print _n;
+        out.print _p + _s + _s; }%<label class="df-validation-msg" ng-if='!hideValidation&&form.${_arg.name}.$error.required'>${messages.get("validation.required")}</label>%{ out.print _n;
+        out.print _p + _s; }%</div>%{ out.print _n;
+    }
+}%#{/ngApp.std.form-field}

@@ -1,0 +1,22 @@
+#{ngApp.nav-head model: model, currentUser: currentUser, debug: debug, p: p, s: s, n: n, d: d /}
+<!-- Info messages -->
+<div>
+    <div ng-switch="$state.current.name">
+        <div ng-switch-default>
+            <ui-view/>
+        </div>
+        <div ng-switch-when="doc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" id='doc-list'>
+                        <ul class="list-unstyled" ng-repeat="(type, conf) in $docflow.config.docs">
+                            <li>
+                                <h4><a ng-href='{{$state.href("doc." + type + ".list")}}'>{{type}}</a></h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

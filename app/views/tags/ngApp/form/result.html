@@ -1,0 +1,6 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d, extra: "ng-model='${_arg.view}'"}%{
+if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+out.print _p + _s; }%<div class="df-view result-{{item.${_arg.name}.result}}" ng-if='v("${_arg.name}", item) && ${_arg.view} && !${_arg.view}.messages'>{{${_arg.view}.result == 'success' ? '&{'result.success'}' : '&{'result.error'}'}}</div>%{ out.print _n;
+out.print _p + _s; }%<div class="df-view result-{{item.${_arg.name}.result}}" ng-if='v("${_arg.name}", item) && ${_arg.view}.messages' ng-click="showMessages(); $event.stopPropagation()">{{${_arg.view}.result == 'success' ? '&{'result.success'}' : '&{'result.error'}'}} <span class="result-badge">{{${_arg.view}.messages.count}}</span></div>%{ out.print _n;
+}%#{/ngApp.std.form-field}

@@ -1,0 +1,28 @@
+<div>
+    <!-- Info messages -->
+#{ngApp.std.form-message p: p, s: s, n: n, d: d /}
+
+    <!-- Item header -->
+    <div class="df-page-header-panel"%{ def isFirst = true;
+    document.states.each { state -> if (!state.color) return;
+    if (isFirst) { out.print " ng-class=\"{"; isFirst = false; }
+    else out.print ",";
+    out.print "'color-${state.color}':item.state=='${state.name}'";
+    }; if (!isFirst) out.print "}\""; }%>
+    <button type="button" class="close" ng-click="$close()">&times;</button>
+    <div ng-include="itemHeaderUrl"/>
+</div>
+<!--Main Area-->
+<div ng-include="tab.angularTmpl" class="df-form-tabs"></div>
+<script type="text/ng-template" id="/tmpl/doc/${document.name}?b=ngApp&t=mainTab">
+    <div ng-controller="tab.controller" docflow-form>
+            <!--Tabs -->
+        #{ngApp.std.form-tabs document: document, template: template, debug: debug, item: item, tab: tab, p: p, s: s, n: n, d: d /}
+            <!--Tab content -->
+            <div class="tab-content">
+            #{ngApp.std.form document: document, template: template, debug: debug, p: p, s: s, n: n, d: d }
+                                #{ngApp.std.form-action-buttons document: document, template: template, debug: debug, p: p, s: s, n: n, d: d /}
+                            #{/ngApp.std.form}
+            </div>
+    </div>
+</script>

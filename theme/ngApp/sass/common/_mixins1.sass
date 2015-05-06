@@ -1,0 +1,116 @@
+// Project local common mixins
+
+@mixin table($columns)
+  $sum: 0
+  @for $i from 1 through length($columns)
+    $sum: $sum + nth(nth($columns, $i), 2)
+  @for $i from 1 through length($columns)
+    td.#{nth(nth($columns, $i), 1)}
+      width: round(nth(nth($columns, $i), 2) * 100 / $sum) * 1%
+
+@mixin a-tag-without-hover-effect($text-color)
+  &, &:hover, &:focus // no visible links
+    color: $text-color
+    text-decoration: none
+    outline: none
+
+@mixin div-height($size, $v-shift: 0)
+  line-height: vr(ms($size))
+  height: vr(ms($size))
+  $t: vr(ceil(ms($size))) / 2
+  margin: ($t + $v-shift) 0 ($t - $v-shift) 0
+  //min-height: vr(ceil(ms($size)))
+
+@mixin placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+@mixin padding-in-rem($top, $right, $bottom, $left)
+  padding-top: $top/16*1rem
+  padding-bottom: $bottom/16*1rem
+  padding-right: $right/16*1rem
+  padding-left: $left/16*1rem
+
+@mixin transform($param...)
+  -webkit-transform: $param
+  -moz-transform: $param
+  -o-transform: $param
+  transform: $param
+
+@mixin refers-btn
+  line-height: 1
+  background: white
+  border: 1px solid #CCCCCC
+  cursor: pointer
+  &:hover
+    background: #CCCCCC
+    i
+      opacity: 1
+  &:focus
+    outline: none
+  i
+    font-size: 0.8rem
+    opacity: 0.5
+    padding-top: 1px
+    padding-bottom: 2px
+
+@mixin df-field
+  position: relative
+  line-height: vr(1.5) * 1rem
+  box-sizing: border-box
+  .df-label.df-inline
+    text-align: right
+    padding-right: 1rem
+    box-sizing: border-box
+    &.double-row
+      line-height: 1.5rem
+  .df-inline
+    &:after
+      content: ':'
+  .df-update
+    position: relative
+    max-width: 12rem
+    .df-validation-msg
+      line-height: 0
+      font-size: vr(0.5) * 1rem
+      min-height: vr(0.5) * 1rem
+      display: block
+      color: red
+      text-align: right
+    input
+      @extend %df-input
+    input[type=checkbox]
+      box-shadow: none
+      width: auto
+    textarea
+      @extend %df-input
+      resize: both
+      margin-top: 0.5rem
+      line-height: 1rem
+      min-height: 5rem
+    &.df-refers
+      max-width: 17rem
+      .select2-container
+        width: 180px
+        margin-right: 3px
+      [class^="btn-select2-"]
+        @include refers-btn
+        display: inline-block
+        padding: 2px 6px 3px
+    .df-view
+      font-weight: 300
+    &.valid-error
+      input
+        background: #FFEAC8
+  &.df-type-bool
+    .df-update
+      .df-validation-msg
+        display: none
+
+

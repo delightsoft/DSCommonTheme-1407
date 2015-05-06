@@ -1,0 +1,8 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+    if (_arg.view) {
+        out.print _p + _s; }%<div class="df-view" ng-if='v("${_arg.name}", item)'><a href='{{${_arg.view}}}' target='_blank'>{{${_arg.view}}}</a></div>%{ out.print _n;
+    }
+    }%#{ngApp.std.input _arg, type: 'text', p: (_p + _s), s: _s, n: _n, d: _d /}%{
+}%#{/ngApp.std.form-field}

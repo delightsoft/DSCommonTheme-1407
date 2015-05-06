@@ -1,0 +1,34 @@
+<!-- TODO: Fix HTML layout -->
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"}%
+
+<!-- TODO: Add to SASS ng-file-over class, which will change cursor -->
+<!-- TODO: Disable buttons while upload in params dialog views/tmpl/ngApp/doc/_Default/old/params.html -->
+
+%{ if (_arg.view) { }%
+    <div class="df-view" ng-if="v('${_arg.name}', item)">
+        <a ng-if="item.${_arg.name}.id" ng-href="/api/download/{{item.${_arg.name}.text}}?doc={{item.${_arg.name}.id}}" download target="_parent">{{item.${_arg.name}.text}}</a>
+    </div>
+%{ } }%
+%{ if (_arg.update) { }%
+
+<div ng-if='u("${_arg.name}", item)' ng-model='${_arg.update}' docflow-widget-file="{url:'%{
+    if (_arg.ownerAction)
+        out.print "/api/upload/${_arg.ownerAction.document.name}/action/${_arg.ownerAction.name}";
+    else
+        out.print "/api/upload/{{item.id}}/field/${_arg.name}";
+    }%'}" ng-file-drop ng-file-over>
+
+    <a ng-if="item.${_arg.name}.blocked" ng-href="/api/download/{{item.${_arg.name}.text}}?doc={{item.${_arg.name}.id}}" download target="_parent">{{item.${_arg.name}.text}}</a>
+    <span class='upload-process-wrapper' ng-if='!item.${_arg.name}.blocked'>
+        <span ng-if='progress' style='width:{{progress}}' class='upload-process'></span>
+        {{item.${_arg.name}.text}}
+    </span>
+    <button class="df-btn-file-upload" ng-click='selectFile()'><i class="fa fa-upload"></i></button>
+    <button class="df-btn-file-delete" ng-click='clearFile()'><i class="fa fa-times"></i></button>
+    <input hidden type="file" ng-file-select="">
+    <!-- TODO: Progress bar is required -->
+</div>
+%{ } }%
+#{/ngApp.std.form-field}

@@ -1,0 +1,5 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+    out.print _p + _s; }%<div>{{item.text}}</div>%{ out.print _n;
+}%#{/ngApp.std.form-field}

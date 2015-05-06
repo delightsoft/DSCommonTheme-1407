@@ -1,0 +1,9 @@
+%{ if (d) out.print "${p}<!-- Tmpl: ${tmplName.replace('.', '/') + '.html'} -->${n}"
+def deleted = template.canBeDeleted()
+out.print p; }%<span class="df-form-title" docflow-page-title="&{document.title}">&{document.title}</span>%{ out.print n;
+document.states.each { state ->
+    out.print p; }%<span ng-show='%{if (deleted) out.print "!editor.doc.deleted&&" }%editor.doc.state=="${state.name}"' class="title-state">&{state.title}</span>%{ out.print n;
+}
+if (deleted) {
+    out.print p; }%<span ng-show='item.deleted' class="title-state">&{'item.title.deleted'}</span>%{ out.print n;
+} }%

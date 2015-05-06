@@ -1,0 +1,15 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+if (_arg.view) {
+out.print _p; }%<div class="df-view" ng-if="v('${_arg.name}', item)">%{ out.print _n;
+out.print _p + _s; }%<a ng-if="item.${_arg.name}.id" ng-href="{{$docflow.hrefOpenDoc(item.${_arg.name}.id)}}">{{${_arg.view}.text}}</a>%{ out.print _n;
+out.print _p; }%</div>%{ out.print _n;
+}
+if (_arg.update) {
+out.print _p; }%<div class="df-update df-refers" ng-if="u('${_arg.name}',item)" ng-model="$parent.${_arg.update}" name="${_arg.name}"%{
+if (_arg.required) { }% required%{ }
+}% docflow-widget-selector='{docType:"${_arg.type.substring(1)}",template:"${_template}",first:"", filter:"${_filter}"}'>%{ out.print _n;
+out.print _p + _s; }%<input docflow-select2 type="hidden">%{ out.print _n;
+out.print _p + _s; }%<a href="" ng-click="createNew()" class="btn-select2-add"><i class="fa fa-plus"></i></a>%{ out.print _n;
+out.print _p + _s; }%<a ng-if="item.${_arg.name}.id" ng-href="{{$docflow.hrefOpenDoc(item.${_arg.name}.id)}}" class="btn-select2-link"><i class="fa fa-share"></i></a>%{ out.print _n;
+out.print _p; }%</div>%{ out.print _n;
+} }%

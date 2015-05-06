@@ -1,0 +1,14 @@
+*{<div class="dropdown" id="btn-back-history">}*
+    *{<i class="icon-mail-reply-all dropdown-toggle" data-toggle="dropdown" docflow-widget-dropdown>}*
+    *{</i>}*
+    *{<ul class="dropdown-menu">}*
+       *{<li><a href="#">test</a></li>}*
+       *{<li><a href="#">test</a></li>}*
+       *{<li><a href="#">test</a></li>}*
+    *{</ul>}*
+*{</div>}*
+%{ def deleted = template.canBeDeleted() }%
+<h3 docflow-page-title="&{document.title}" style="display: inline-block">&{document.title}</h3>%{
+document.states.each { state ->
+}%<span ng-show='%{if (deleted) out.print "!item.deleted&&" }%item.state=="${state.name}"' class="title-state">&{state.title}</span>%{
+}}%%{ if (deleted) { }%<span ng-show='item.deleted' class="title-state">&{'item.title.deleted'}</span>%{ } }%

@@ -1,0 +1,13 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+if (_document.sortOrders.size() > 1) {
+    out.print _p; }%<div class="df-sort-orders">%{ out.print _n;
+    out.print _p + _s; }%<select ui-select2 ng-model='values.o' class="input-medium" ng-change="update({'p':1,'o':values.o,'desc':'0'})" ng-init="values.o = query.o || '${_document.sortOrders[0].name}'; values.desc=query.desc">%{ out.print _n;
+        _document.sortOrders.each { sortOrder ->
+            out.print _p + _s + _s; }%<option value="${sortOrder.name}">${messages.get(messages.get(sortOrder.title))}</option>%{ out.print _n;
+        }
+    out.print _p + _s; }%</select>%{ out.print _n;
+    out.print _p; }%</div>%{ out.print _n;
+    out.print _p; }%<div class="df-sord-order-direction" ng-if="$angular.isDefined(values.desc)" ng-click="values.desc=values.desc=='1'?'0':'1'; update({'p':1,'desc':values.desc})">%{ out.print _n;
+    out.print _p + _s; }%<i ng-class="{'fa-chevron-circle-up': values.desc=='1', 'fa-chevron-circle-down': values.desc!='1'}" class="fa"></i>%{ out.print _n;
+    out.print _p; }%</div>%{ out.print _n;
+} }%

@@ -1,0 +1,41 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%<docflow-table doc-type="${_document.name}" params='{"t":"list", ${_listParams}}' url-prefix=''>%{ out.print _n;
+}%#{doBody /}%{
+if (_d) out.print "${_p + _s}<!-- Part: list -->${_n}";
+out.print _p + _s; }%<div class="df-block-list" ng-switch="state">%{ out.print _n;
+out.print _p + _s + _s; }%<div ng-switch-when="in-progress" class="df-list-empty">%{ out.print _n;
+out.print _p + _s + _s + _s; }%<strong>&{'field.list.inProgress'}</strong>%{ out.print _n;
+out.print _p + _s + _s; }%</div>%{ out.print _n;
+out.print _p + _s + _s; }%<div ng-switch-when="empty" class="df-list-empty">%{ out.print _n;
+out.print _p + _s + _s + _s; }%<strong>&{'field.list.empty'}</strong>%{ out.print _n;
+out.print _p + _s + _s; }%</div>%{ out.print _n;
+
+out.print _p + _s + _s; }%<table ng-switch-default class="df-list-header">%{ out.print _n;
+out.print _p + _s + _s + _s; }%<tr><td class="df-td-open-doc"></td><td>%{ out.print _n;
+    _template.columns.each { column ->
+    column.smartTag('ngApp.form', this, _debug, [lbl: true, val: false, p: (_p + _s + _s + _s + _s), s: _s, n: _n, d: _d]);
+    }
+    out.print _p + _s + _s; }%</td>%{ out.print _n;
+out.print _p + _s + _s; }%</table>%{ out.print _n;
+out.print _p + _s + _s; }%<div ng-switch-default class="df-list">%{ out.print _n;
+out.print _p + _s + _s; }%<table>%{ out.print _n;
+out.print _p + _s + _s + _s + _s; }%<tr ng-repeat="item in list" ng-form="form" docflow-form>%{ out.print _n;
+out.print _p + _s + _s + _s + _s + _s; }%<td class="df-td-open-doc link">%{ out.print _n;
+out.print _p + _s + _s + _s + _s + _s + _s; }%<div><a href="{{$docflow.hrefOpenDoc(item.id)}}"><i class="fa fa-file-o"></i></a></div>%{ out.print _n;
+out.print _p + _s + _s + _s + _s + _s; }%</td>%{ out.print _n;
+out.print _p + _s + _s + _s + _s + _s; }%<td>%{ out.print _n;
+_template.columns.each { column ->
+column.smartTag('ngApp.form', this, _debug, [lbl: true, val: true, p: (_p + _s + _s + _s + _s + _s + _s), s: _s, n: _n, d: _d]);
+}
+out.print _p + _s + _s + _s + _s + _s; }%</td>%{ out.print _n;
+out.print _p + _s + _s + _s + _s; }%</tr>%{ out.print _n;
+out.print _p + _s + _s; }%</table>%{ out.print _n;
+out.print _p + _s; }%</div>%{ out.print _n;
+out.print _p + _s; }%</div>%{ out.print _n;
+out.print _p + _s; }%<div class="df-block-pagination">%{ out.print _n;
+out.print _p + _s + _s; }%<table ng-show="query.p > 0 && query.c > 1" class="df-pagination"><tr>%{ out.print _n;
+out.print _p + _s + _s + _s; }%<td><pagination boundary-links="true" total-items="query.c" items-per-page="1" page="query.p" max-size="pagingSize" on-select-page="onSelectPage(page)"></pagination></td>%{ out.print _n;
+out.print _p + _s + _s + _s; }%<td><span class="items" ng-if="items">&{'list.itemsCount'}: {{items}}</span></td>%{ out.print _n;
+out.print _p + _s + _s; }%</tr></table>%{ out.print _n;
+out.print _p + _s; }%</div>%{ out.print _n;
+out.print _p; }%</docflow-table>%{ out.print _n; }%

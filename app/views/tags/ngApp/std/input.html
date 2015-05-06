@@ -1,0 +1,22 @@
+%{ if (!_arg.update) return
+if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.input-frame _arg, debug: _debug, p: _p, s: _s, n: _n, d: _d }%{
+if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+out.print _p + _s; }%<input docflow-id='df' name="${_arg.name}" type="${_type}" ng-model="${_arg.update}"%{
+        ['min', 'min', 'max', 'minLength', 'maxLength', 'pattern'].each { err ->
+            if (_arg[err]) out.print " $err='${_arg[err]}'"
+        }
+        if (_arg.required) out.print " required"
+    %} ng-class="{'df-invalid': !hideValidation&&form.${_arg.name}.$invalid}">%{ out.print _n;
+}%#{ngApp.std.input-frame-validation _arg, debug: _debug, show: "!hideValidation&&u('${_arg.name}',item)&&form.${_arg.name}.\$invalid", p: (_p + _s), s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body2: ${tag} -->${_n}"
+    ['required', 'min', 'max', 'minLength', 'maxLength', 'pattern'].each { err ->
+        if (_arg[err]) {
+            }%#{ngApp.std.input-frame-message _arg, err: err, p: (_p + _s), s: _s, n: _n, d: _d /}%{
+        }
+    }
+    if (_arg.type == 'email') {
+        }%#{ngApp.std.input-frame-message _arg, err: 'email', p: (_p + _s), s: _s, n: _n, d: _d /}%{
+    }
+}%#{/ngApp.std.input-frame-validation}%{
+}%#{/ngApp.std.input-frame}

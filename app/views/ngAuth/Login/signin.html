@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="main">
+<head>
+    <meta charset="utf-8">
+    <title>&{'login.title'}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="@{'/static/libs/bootstrap-3.0.2/css/bootstrap.min.css'}" media="all" type="text/css" rel="stylesheet">
+    <link href="@{'/static/libs/font-awesome-4.0.3/css/font-awesome.min.css'}" media="all" type="text/css" rel="stylesheet">
+    <link href="@{'/static/ngApp/css/DSCommonTheme-Bootstrap3.min.css'}" media="all" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="@{'/static/libs/jquery-2.0.3/jquery-2.0.3.min.js'}"></script>
+<head>
+<body>
+<div class="container">
+    <form class="form-signin" role="form" method="POST" action="" accept-charset="UTF-8">
+        <h2 class="form-signin-heading">Please sign in</h2>
+    #{if flash.get('failed') != null}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Incorrect Username or Password!
+        </div>
+    #{/if}
+        <input type="text" class="form-control" id="username" name="email" placeholder="Email" value="${email}"
+               required autofocus>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign in</button>
+    </form>
+</div>
+</body>
+</html>

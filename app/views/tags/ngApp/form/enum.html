@@ -1,0 +1,33 @@
+<!-- TODO: Fix HTML layout -->
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+    if (_debug)
+        _arg.debugSmartTag('ngApp.form', this);
+    if (_arg.view) {
+        out.print _p; }%<span class="label label-info value-{{${_arg.view}}}" ng-if='v("${_arg.name}",item)' docflow-enum="%{
+        out.print '{'
+        _arg.enumValues.eachWithIndex { value, i ->
+            out.print "${value.name}:{title:'${messages.get(value.title).replace('\"', '\\\"').replace('\'', '\\\'').escape()}'"
+            if (value.color)
+                out.print ",color:'${value.color}'"
+            out.print "}"
+            if (i + 1 < _arg.enumValues.size())
+                out.print ','
+        }
+        out.print '}'
+        }%" ng-model='${_arg.view}'></span>%{ out.print _n;
+    }
+    if (_arg.update) { }%
+        <div class="df-update df-selector" ng-if='u("${_arg.name}",item)' ng-init="enumOpen=false">
+        %{ out.print "<select ui-select2 ng-model='${_arg.update}' name='${_arg.name}'";
+        if (_arg.required) {out.print " required"}
+        out.print "><option value=''></option>"
+        _arg.enumValues.each { value -> out.print"<option value='${value.name}'>${messages.get(value.title)}</option>" }
+        }%
+        </select>
+
+        </div>
+   %{ } }%
+#{/ngApp.std.form-field}
+

@@ -1,0 +1,7 @@
+<!-- TODO: Fix HTML layout -->
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%</td><td class="warning-sign-td" valign="top">%{ out.print _n;
+out.print _p + _s; }%<i ng-if="!hideValidation&&form.${_arg}.$invalid" class="fa fa-warning" docflow-widget-popover="{trigger:'hover', placement:'right'}">%{ out.print _n;
+out.print _p + _s + _s; }%<div class="popover"><div class="arrow"></div><div class="popover-content">%{ out.print _n;
+}%#{doBody /}%{
+out.print _p + _s; }%</div></div></i>%{ out.print _n; }%

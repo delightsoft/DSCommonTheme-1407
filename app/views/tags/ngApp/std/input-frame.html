@@ -1,0 +1,4 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%<div class="df-update" ng-if="u('${_arg.name}',item)">{% out.print _n;
+}%#{doBody /}{%
+out.print _p; }%</div>%{ out.print _n; }%

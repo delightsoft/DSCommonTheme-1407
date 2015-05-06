@@ -1,0 +1,30 @@
+<!-- TODO: Fix HTML layout -->
+%{ if (_d) out.print "${_p}<!-- Tag: ${tag = play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+}%#{ngApp.std.form-field _arg, debug: _debug, lbl: _lbl, val: _val, classes: _classes, p: _p, s: _s, n: _n, d: _d }%{
+    if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+    if (_arg.view) {
+        out.print _p + _s; }%<div class="df-view" ng-if='v("${_arg.name}", item)'><pre>{{${_arg.view}}}</pre></div>%{ out.print _n;
+    }
+    if (_arg.update) {
+        }%#{ngApp.std.input-frame _arg, debug: _debug, p: _p, s: _s, n: _n, d: _d }%{
+            if (_d) out.print "${_p + _s}<!-- Body: ${tag} -->${_n}"
+            out.print _p + _s; }%<textarea class="df-update" ng-if='u("${_arg.name}",item)' docflow-id='df' name='${_arg.name}' ng-model='${_arg.update}' %{
+            if (_arg.required)
+                out.print " required";
+            ['minLength', 'maxLength'].each { err ->
+                if (_arg[err])
+                    out.print " $err='${_arg[err]}'"
+            }
+            if (_rows != null)
+                out.print " rows='${_rows}'"
+            }% ng-class='{"input-valid-error": form.${_arg.name}.$invalid}'></textarea>%{ out.print _n;
+        }%#{ngApp.std.input-frame-validation _arg, debug: _debug, show: "u('${_arg.name}',item)&&form.${_arg.name}.\$invalid", p: (_p + _s), s: _s, n: _n, d: _d}%{
+            if (_d) out.print "${_p + _s}<!-- Body2: ${tag} -->${_n}"
+                ['required', 'minLength', 'maxLength', 'pattern'].each { err ->
+                    if (_arg[err])
+                        }%#{ngApp.std.input-frame-message _arg, err: err, p: (_p + _s), s: _s, n: _n, d: _d /}%{
+                }
+        }%#{/ngApp.std.input-frame-validation}%{
+        }%#{/ngApp.std.input-frame}%{
+    }
+}%#{/ngApp.std.form-field}

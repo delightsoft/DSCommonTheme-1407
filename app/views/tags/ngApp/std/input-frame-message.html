@@ -1,0 +1,2 @@
+%{ if (_d) out.print "${_p}<!-- Tag: ${play.templates.TagContext.current().tagName.replace('.', '/') + '.html'} -->${_n}"
+out.print _p; }%<label docflow-for='${_arg}' class="df-validation-msg" ng-if="!hideValidation&&form.${_arg.name}.$error.${_err}">&{'validation.' + _err, _arg.hasProperty(_err) ? _arg[_err] : null}</label>%{ out.print _n; }%

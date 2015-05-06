@@ -1,0 +1,258 @@
+$lst-h-control-height: 25px
+$inpt-brdr-color: #cdcdcd
+$h-color: #E6E6E6
+
+%h-btn
+  height: $lst-h-control-height
+  line-height: 1
+  background-color: $h-color
+  border: 1px solid darken($h-color, 20%)
+  vertical-align: middle
+  &:hover
+    box-shadow: none
+    background-color: darken($h-color, 20%)
+  i
+    opacity: 0.5
+
+%select-input
+  border: 1px solid $inpt-brdr-color
+  height: $lst-h-control-height
+  font-size: 1rem
+  line-height: 1.5
+  padding: 0px
+  padding-left: 10px
+  border-radius: 2px
+
+@mixin srt-fltr-input($width)
+  width: $width
+  margin-right: 1.5rem
+  input
+    @extend %select-input
+    font-size: 13px
+    width: 100%
+
+.df-screen-list
+  a
+    text-decoration: none
+  docflow-table
+    &>.df-header
+      position: relative
+      background: $h-color
+      h2
+        margin: 0
+        padding-left: $wide-border
+        padding-top: 0.5rem
+        padding-bottom: 0.5rem
+      @include container(100% 1 0 $vr-debug)
+      .df-block-filters
+        padding-left: $wide-border
+        padding-bottom: 0.5rem
+        font-weight: 300
+        overflow: hidden
+        float: left
+        .df-list-search
+          padding-top: 0
+          padding-right: 1rem
+          float: left
+          display: table
+          border-collapse: separate
+          input
+            @extend %select-input
+            display: table-cell
+            width: 10rem
+          span
+            display: table-cell
+            vertical-align: middle
+            button
+              @extend %df-button
+              display: inline-block
+              height: $lst-h-control-height + 2
+              line-height: 1
+              margin-left: -1px
+              border: 1px solid #cdcdcd
+              text-align: center
+              cursor: pointer
+              font-size: 0.8rem
+              color: darken($h-color,20%)
+              &:hover
+                background: darken($h-color,5%)
+                box-shadow: none
+                border: 1px solid #cdcdcd
+              i
+                margin-right: 0
+        .df-list-filter
+          @include span(3 of 12)
+          @include srt-fltr-input(7rem)
+        .df-sort-orders
+          @include span(3 of 12)
+          @include srt-fltr-input(9rem)
+        .df-sord-order-direction
+          line-height: $lst-h-control-height
+          float: left
+          font-size: 1rem
+          color: gray
+          @include transition(all .2s ease)
+          margin-right: 2rem
+          opacity: .5
+          cursor: pointer
+      .df-action-create
+        @extend %h-btn
+        height: 26px
+        margin-right: $wide-border
+        font-weight: 100
+        float: right
+    .df-block-list
+      .df-list
+        height: 500px // override by script
+        overflow-y: scroll
+      .df-list, .df-list-header
+        width: 100%
+        table
+          width: 100%
+        .df-field
+          text-align: left
+          padding: 2px 5px
+          @include span(1 of 12)
+          &.df-type-enum, &.df-type-string, &.df-type-text, &.df-type-file
+            @include span(2 of 12)
+            &.df-type-__state
+              @include span(1 of 12)
+          &.df-type-result
+            position: relative
+            cursor: pointer
+        label.df-inline
+          display: none
+        tr
+          border-bottom: 1px solid #ebebeb
+        td, th
+          padding: 0
+          font-size: $base-font-size*0.9
+          .df-block-actions
+            button
+              line-height: 1.5
+          &.df-td-other-actions
+            width: 3rem
+            .dropdown-menu
+              top: 50%
+              right: 1rem
+              left: auto
+              padding: 1rem
+          &.df-td-open-doc
+            width: 4rem
+            padding: 0
+          &.df-td-open-doc.link
+            width: 4rem
+            padding: 0
+            vertical-align: top
+            cursor: pointer
+            &:hover
+              background-color: darken($h-color, 15%)
+            a
+              display: block
+              width: 100%
+              height: 100%
+              text-align: center
+              text-decoration: none
+              color: #000000
+            i
+              font-size: 1.2rem
+              line-height: 1.4
+        tr:hover
+          td.df-td-open-doc
+            opacity: 0.8
+        th
+          line-height: 1
+          padding: 0.5rem $wide-border
+        tbody
+          tr:hover
+            background-color: #f7f7f7
+
+%enum
+  display: inline
+  color: white
+  padding: 0.2rem 0.3rem
+  border-radius: 3px
+  font-size: $base-font-size*0.7
+  background-color: #808080
+  &.df-state-blue-dark, &.df-enum-blue-dark
+    background-color: $color-blue-dark
+  &.df-state-blue-light, &.df-enum-blue-light
+    background-color: $color-blue-light
+  &.df-state-orange, &.df-enum-orange
+    background-color: $color-orange
+  &.df-state-green, &.df-enum-green
+    background-color: $color-green
+  &.df-state-red, &.df-enum-red
+    background-color: $color-red
+
+span.label
+  @extend %enum
+
+
+
+.select-options
+  position: absolute
+  overflow-y: scroll
+  overflow-x: hidden
+  max-height: 120px
+  width: 180px
+  z-index: 1000
+  background: white
+  border: 1px solid $inpt-brdr-color
+  span
+    display: block
+    padding: 4px 7px
+    cursor: pointer
+    &:hover
+      background: darken($inpt-brdr-color, 10%)
+
+.df-pagination
+  margin: 0.5rem $wide-border
+  .pagination
+    cursor: pointer
+    display: inline-block
+    padding-left: 0
+    margin: 0
+    border-radius: 4px
+    font-size: 14/16 * 1rem
+    &>li
+      display: inline
+      &:first-child>a
+        margin-left: 0
+        border-left: 1px solid #ddd
+        border-bottom-left-radius: 4px
+        border-top-left-radius: 4px
+      &:last-child>a
+        border-bottom-right-radius: 4px
+        border-top-right-radius: 4px
+      a
+        position: relative
+        float: left
+        padding: 6px 12px
+        line-height: 1.42857143
+        text-decoration: none
+        color: #428bca
+        background-color: #fff
+        border: 1px solid #ddd
+        border-left: none
+        &:hover
+          color: #2a6496
+          background-color: #eee
+          border-color: #ddd
+      &.active
+        a
+          background-color: #cedeee
+      &.disabled a
+        color: #808080
+  span.items
+    display: inline-block
+    padding-left: 2rem
+    padding-bottom: 0.5rem
+    font-size: 14/16 * 1rem
+
+.df-block-pagination
+  position: fixed
+  bottom: 0
+  left: 0
+  width: 100%
+  background-color: white

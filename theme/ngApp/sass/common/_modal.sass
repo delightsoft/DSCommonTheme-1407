@@ -1,0 +1,163 @@
+
+.modal
+  display: none
+  overflow: auto
+  overflow-y: scroll
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1050
+  -webkit-overflow-scrolling: touch
+  outline: 0
+  .modal-dialog
+    position: relative
+    z-index: 1050
+    width: auto
+    padding: 10px
+    padding-top: 7rem
+    margin-right: auto
+    margin-left: auto
+    @include breakpoint(min-width $break-medium)
+      width: 600px
+  .modal-content
+    position: relative
+    background-color: #fff
+    border: 1px solid #999
+    border-radius: 6px
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5)
+    box-shadow: 0 3px 9px rgba(0,0,0,.5)
+    background-clip: padding-box
+    outline: 0
+  .modal-header, .df-page-header-panel
+    padding: 9px
+    min-height: 1rem
+    border-bottom: 1px solid #e5e5e5
+    h4, h3
+      margin: 0
+      font-size: 1.1rem
+    .close
+      margin-top: -2px
+      padding: 0
+      cursor: pointer
+      background: transparent
+      border: 0
+      float: right
+      font-size: 21px
+      font-weight: bold
+      line-height: 1
+      color: #000000
+      text-shadow: 0 1px 0 #ffffff
+      opacity: 0.2
+  .modal-body
+    position: relative
+    padding: 20px
+    overflow: auto
+    input
+      @extend %df-input
+      padding: 5px
+    .btn-group
+      float: right
+      margin-top: 0.7rem
+      .df-btn
+        position: relative
+        overflow: hidden
+        background: #47A447
+        color: white
+        &:hover
+          background: darken(#47A447, 10%)
+        &.df-btn-upload
+          background: #3276B1
+          &:hover
+            background: darken(#3276B1, 10%)
+
+      i
+        color: white
+        margin-right: 0.3rem
+  .modal-footer
+    border-top: 1px solid #CCCCCC
+    padding: 0.5rem
+    overflow: auto
+    .df-modal-btn-group
+      float: right
+      button
+        @extend %df-button
+
+  &.in
+    .modal-dialog
+      transform: translate(0,0)
+  &.fade
+    .modal-dialog
+      @include transition(transform, .3s, ease-out)
+
+.fade
+  opacity: 0
+  @include transition(opacity, .15s, lenear)
+  &.in
+    opacity: 1
+
+.modal-backdrop
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1040
+  background-color: #000
+  &.in
+    opacity: 0.5
+
+.modal-content
+  .df-form-tabs
+    .tab-content
+      max-height: 400px
+      overflow: scroll
+      form
+        position: relative
+        &>.df-field, &>.df-structure > .df-field
+          @include span(12 of 12 break)
+        .df-footer
+          position: absolute
+
+
+.modal-content
+  .df-field
+    overflow: auto
+    @include df-field
+    .df-label.df-inline.double-row
+      line-height: inherit
+  .df-label
+    @include span(5 of 12)
+  .df-update
+    @include span(6 of 12)
+
+.df-area-result-popup
+  .modal-dialog
+    @include breakpoint(min-width $break-medium)
+      width: 900px
+    .modal-content
+      max-height: 500px
+      overflow-y: scroll
+      padding: 1rem
+      .fa-times
+        position: absolute
+        z-index: 1000
+        right: 15px
+        top: 11px
+        opacity: 0.3
+        cursor: pointer
+
+.modal-confirm
+  @include layout(12)
+  .col1
+    @include span(2)
+    @include pre(1)
+    text-align: center
+    font-size: 5rem
+    i
+      color: $color-blue-light
+  .col2
+    @include span(8)
+
+

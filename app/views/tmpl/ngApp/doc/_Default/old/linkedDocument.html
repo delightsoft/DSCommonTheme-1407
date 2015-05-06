@@ -1,0 +1,14 @@
+<div class="row" ng-controller="tab.controller" docflow-form>
+    <div class="col-md-12">
+        <!--Tabs -->
+        #{ngApp.std.form-tabs document: document, template: template, debug: debug, item: item, tab: tab, p: p, s: s, n: n, d: d /}
+        <!--Tab content -->
+        <div class="tab-content">
+            <div class="tab-content" docflow-resize-item-content="{contentClass:'.form-horizontal', bottomClass: '.df-item-footer'}">
+            #{ngApp.std.form document: document, template: template, debug: debug, p: p, s: s, n: n, d: d }
+                #{ngApp.std.form-action-buttons document: document, template: template, item: item, tab: tab, debug: debug, p: p, s: s, n: n, d: d /}
+            #{/ngApp.std.form}
+            </div>
+        </div>
+    </div>
+</div>
